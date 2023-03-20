@@ -1,77 +1,112 @@
-/* .grid{
-    display: grid;
-    width: 100%;
-    height: fit-content;
-    grid-gap: 0;
-    grid-template-columns: repeat(3, 1fr);
-} */
+.grid {
+  display: flex;
+  background-color: red;
+}
+
 .card {
-    display: flex;
-    align-items: center;
-    width: auto;
-    height: 250px;
-    border-radius: 5px;
-    border: 1px solid #241d2f;
-    padding: 16px;
-    box-sizing: border-box;
-    margin-bottom: 8px;
-    background-color: #130c38;
-    color: #fff;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  border: 1px solid #241d2f;
+  padding: 16px;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+  background-color: #130c38;
+  color: #fff;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.imageContainer {
+  max-width: 50%;
+  max-height: 60%;
+  margin-right: 16px;
+  border-radius: 4%;
+  overflow: hidden;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.fullName {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.jobDescription {
+  font-size: 18px;
+  margin: 0;
+  margin-bottom: 16px;
+  color: #ccc;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+}
+
+.website {
+  text-decoration: none;
+  margin-bottom: 8px;
+  color: #ccc;
+}
+
+.email {
+  color: #79c5ff;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .content {
-    display: flex;
-    align-items: center;
-    width: auto;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .textContent {
-    display: flex;
-    flex-direction: column;
-    width: auto;
+  .content {
+    flex-wrap: nowrap;
   }
 
   .imageContainer {
-    max-width: 50%;
-    max-height: 60%;
+    max-width: 40%;
+    max-height: 80%;
     margin-right: 16px;
-    border-radius: 4%;
-    overflow: hidden;
   }
-  
-  .image {
-    max-width: 100%;
-    height: auto;  
-    object-fit: cover;
-  }
-  
+
   .fullName {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-    margin-bottom: 8px;
-  }
-  
-  .jobDescription {
-    font-size: 18px;
-    margin: 0;
+    font-size: 28px;
     margin-bottom: 16px;
-    color: #ccc;
   }
-  
-  .contact {
-    display: flex;
-    flex-direction: column;
+
+  .jobDescription {
+    font-size: 22px;
+    margin-bottom: 32px;
   }
-  
+
   .website {
-    text-decoration: none;
-    margin-bottom: 8px;
-    color: #ccc;
+    font-size: 18px;
   }
-  
-  .email {
-    color: #79c5ff;
-    text-decoration: none;
-  }
-  
+}

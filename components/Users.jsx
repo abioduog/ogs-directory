@@ -6,27 +6,6 @@ import { db, storage } from '../lib/firebase';
 const UsersProfile = () => {
   const [userProfiles, setUserProfiles] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const querySnapshot = await db.collection('usersProfile').get();
-  //     const data = querySnapshot.docs.map(async (doc) => {
-  //       const userData = doc.data();
-  //       const imgUrl = await storage
-  //         .ref(`users/${doc.id}`)
-  //         .getDownloadURL()
-  //         .catch(() => null);
-  //       return {
-  //         id: doc.id,
-  //         imgUrl,
-  //         ...userData,
-  //       };
-  //     });
-  //     const resolvedData = await Promise.all(data);
-  //     setUserProfiles(resolvedData);
-  //   };
-  //   fetchData();
-  // }, []);
-
   useEffect(() => {
     const fetchData = async () => {
       const querySnapshot = await db.collection('usersProfile').get();
