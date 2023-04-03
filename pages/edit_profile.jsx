@@ -107,6 +107,57 @@ const EditProfile = () => {
   //   }
   // };
   
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  
+  //   try {
+  //     // Update user information in Firestore
+  //     const userRef = doc(db, 'usersProfile', authUser.uid);
+  //     const updatedData = {
+  //       firstname: formData.firstname,
+  //       lastname: formData.lastname,
+  //       email: formData.email,
+  //       website: formData.website,
+  //       social: formData.social,
+  //     };
+
+
+  //   await updateDoc(userRef, filteredData);
+  //     await updateDoc(userRef, updatedData);
+  
+  //     // Update profile image in Firestore Storage
+  //     if (profileImage) {
+  //       const storageRef = storage.ref();
+  //       const imageRef = storageRef.child(`users/${authUser.uid}`);
+  
+  //       // Check if an existing image exists and delete it if it does
+  //       try {
+  //         const existingImageUrl = await imageRef.getDownloadURL();
+  //         if (existingImageUrl) {
+  //           await storageRef.child(`users/${authUser.uid}`).delete();
+  //         }
+  //       } catch (error) {
+  //         console.log('No existing image found, creating a new one.');
+  //       }
+  
+  //       // Upload the new profile image
+  //       await imageRef.put(profileImage);
+  //       const downloadURL = await imageRef.getDownloadURL();
+  //       setProfileImageUrl(downloadURL);
+  //       updatedData.image = downloadURL;
+  //       await updateDoc(userRef, updatedData);
+  //     }
+  
+  //     // Show success message and redirect to profile page
+  //     setSuccess(true);
+  //     setTimeout(() => {
+  //       router.push('/profile');
+  //     }, 2000);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
   
@@ -120,7 +171,13 @@ const EditProfile = () => {
         website: formData.website,
         social: formData.social,
       };
-      await updateDoc(userRef, updatedData);
+  
+      // Filter out empty or null values
+      const filteredData = Object.fromEntries(
+        Object.entries(updatedData).filter(([_, v]) => v != null && v !== "")
+      );
+  
+      await updateDoc(userRef, filteredData);
   
       // Update profile image in Firestore Storage
       if (profileImage) {
@@ -141,8 +198,7 @@ const EditProfile = () => {
         await imageRef.put(profileImage);
         const downloadURL = await imageRef.getDownloadURL();
         setProfileImageUrl(downloadURL);
-        updatedData.image = downloadURL;
-        await updateDoc(userRef, updatedData);
+        await updateDoc(userRef, { image: downloadURL });
       }
   
       // Show success message and redirect to profile page
@@ -154,6 +210,7 @@ const EditProfile = () => {
       console.error(error);
     }
   };
+  
   
 
   if (!authUser) {
