@@ -15,7 +15,7 @@ const Navbar = () => {
             <nav className={styles.navbar}>
                 <Link href="/members">
                     <a className={styles.link}>
-                        <span className={styles.logo}>OGS Directory</span>
+                        <span className={styles.logo}>OGS 88 Portal</span>
                     </a>
                 </Link>
                 <ul className={styles.menu}>

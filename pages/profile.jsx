@@ -10,12 +10,16 @@ import sanitize from "sanitize-filename";
 const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
+  const [loadingUserData, setLoadingUserData] = useState(true);
   const { authUser, loading } = useAuth();
 
   useEffect(() => {
+    let isMounted = true;
     const fetchUserData = async () => {
       try {
+        if (isMounted) setLoadingUserData(true);
         if (!authUser) {
+          if (isMounted) setLoadingUserData(false);
           return;
         }
         const docRef = doc(db, "usersProfile", authUser.uid);
@@ -36,12 +40,17 @@ const Profile = () => {
         } else {
           console.log("No such document!");
         }
+        if (isMounted) setLoadingUserData(false);
       } catch (error) {
         console.error(error);
+        if (isMounted) setLoadingUserData(false);
       }
     };
 
     fetchUserData();
+    return () => {
+      isMounted = false; // Add this line
+    };
   }, [authUser]);
 
   if (loading || !userData || !imageUrl) {
