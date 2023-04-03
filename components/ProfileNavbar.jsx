@@ -16,14 +16,14 @@ const ProfileNavbar = () => {
     return (
         <div className={styles.hero}>
             <nav className={styles.navbar}>
-                <Link href="/logged_in">
+                <Link href="/members">
                     <a className={styles.link}>
                         <span className={styles.logo}>OGS Directory</span>
                     </a>
                 </Link>
                 <ul className={styles.menu}>
                     <li className={styles.menuItem}>
-                        <Link href="/logged_in">
+                        <Link href="/members">
                             <a className={`${styles.link} ${isActive('/members')}`}>Members</a>
                         </Link>
                     </li>

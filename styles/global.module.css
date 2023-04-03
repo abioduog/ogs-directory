@@ -13,18 +13,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 50px;
     padding-left: 3%;
     padding-right: 3%;
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     color: #fff;
     background-image: linear-gradient(360deg, #09040f, rgba(0, 0, 0, 0.5)), linear-gradient(140deg, #0c86ee, #6a59ff 22%, rgba(239, 69, 179, 0.6) 38%, #03395d 57%, #142f5a 75%, #011c34);
 }
-
-
-.gridContainer{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 5px;
-    width: 100%;
-  }

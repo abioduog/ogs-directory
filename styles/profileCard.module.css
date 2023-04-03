@@ -1,4 +1,4 @@
-/* .divBlock {
+.divBlock {
     display: -ms-grid;
     display: grid;
     grid-auto-columns: 1fr;
@@ -26,4 +26,4 @@
 .smaller-img {
     -ms-grid-columns: 0.25fr 1fr;
     grid-template-columns: 0.25fr 1fr;
-  } */
+  }

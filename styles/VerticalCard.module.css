@@ -1,13 +1,59 @@
-.grid {
-  display: flex;
-  background-color: red;
+
+.gridContainer{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+  width: 100%;
+  height: auto;
+  padding-top: 50px;
+}
+
+/* For screens smaller than 1024px, set the grid to 2 columns */
+@media (max-width: 1024px) {
+  .gridContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+    .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* For screens smaller than 768px, set the grid to 1 column */
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* For screens smaller than 466px, set the grid to 1 column */
+@media (max-width: 466px) {
+  .gridContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .card {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: auto;
+  /* height: 260px; */
   border-radius: 5px;
   border: 1px solid #241d2f;
   padding: 16px;
@@ -19,29 +65,26 @@
 
 .content {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  margin-bottom: 16px;
 }
 
 .imageContainer {
-  max-width: 50%;
-  max-height: 60%;
-  margin-right: 16px;
-  border-radius: 4%;
+  width: 100%;
+  height: 150px;
+  /* border-radius: 3px; */
   overflow: hidden;
 }
 
 .image {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
   object-fit: cover;
 }
 
 .textContent {
   display: flex;
   flex-direction: column;
+  margin-left: 10px;
   width: 100%;
 }
 
@@ -49,13 +92,12 @@
   font-size: 24px;
   font-weight: bold;
   margin: 0;
-  margin-bottom: 8px;
+  margin-top: 2px;
 }
 
 .jobDescription {
   font-size: 18px;
   margin: 0;
-  margin-bottom: 16px;
   color: #ccc;
 }
 
@@ -66,47 +108,10 @@
 
 .website {
   text-decoration: none;
-  margin-bottom: 8px;
   color: #ccc;
 }
 
 .email {
   color: #79c5ff;
   text-decoration: none;
-}
-
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .content {
-    flex-wrap: nowrap;
-  }
-
-  .imageContainer {
-    max-width: 40%;
-    max-height: 80%;
-    margin-right: 16px;
-  }
-
-  .fullName {
-    font-size: 28px;
-    margin-bottom: 16px;
-  }
-
-  .jobDescription {
-    font-size: 22px;
-    margin-bottom: 32px;
-  }
-
-  .website {
-    font-size: 18px;
-  }
 }

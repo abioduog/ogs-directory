@@ -3,8 +3,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 0.5rem;
-    padding: 0.5rem;
+    margin-right: 2.5rem;
     background-color: transparent;
   }
   
@@ -15,21 +14,12 @@
     border-radius: 6px;
     font-size: 1rem;
     background-color: transparent;
+    color: white;
   }
 
   .searchInput:focus {
     outline: none;
   }
-  
-  /* .searchButton {
-    margin-left: 0.5rem;
-    padding: 0.5rem;
-    border: none;
-    background-color: #0070f3;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-  } */
 
   .searchButton {
     margin-left: 0.5rem;

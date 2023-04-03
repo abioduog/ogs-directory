@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import UserProfileCard from './UserProfileCard';
-import styles from '.././styles/global.module.css';
+import SearchBar from './SearchBar';
+import styles from '.././styles/VerticalCard.module.css';
 import { db, storage } from '../lib/firebase';
 
 const UsersProfile = () => {
   const [userProfiles, setUserProfiles] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async () => { 
       const querySnapshot = await db.collection('usersProfile').get();
       const data = querySnapshot.docs.map(async (doc) => {
         const userData = doc.data();
@@ -31,13 +33,23 @@ const UsersProfile = () => {
     };
     fetchData();
   }, []);
-  
+
+  const handleSearchChange = (value) => {
+    setSearchTerm(value);
+  };
+
+  const filteredUserProfiles = userProfiles.filter((userProfile) =>
+    `${userProfile.firstname} ${userProfile.lastname}`.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div className={styles.gridContainer}>
-      {userProfiles.map((userProfile) => (
-        <UserProfileCard key={userProfile.id} {...userProfile} />
-      ))}
+    <div>
+      <SearchBar onSearch={handleSearchChange} />
+      <div className={styles.gridContainer}>
+        {filteredUserProfiles.map((userProfile) => (
+          <UserProfileCard key={userProfile.id} {...userProfile} />
+        ))}
+      </div>
     </div>
   );
 };

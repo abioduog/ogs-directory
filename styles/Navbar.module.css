@@ -1,7 +1,8 @@
 .hero {
     position: relative;
-    padding-bottom: 2px;
     background-color: #09040f;
+    /* position: fixed; */
+    width: 100%;
   }
 
 .navbar {
@@ -10,6 +11,11 @@
     justify-content: space-between;
     padding: 16px;
     color: #fff;
+  }
+
+  .navbar a {
+    text-decoration: none;
+    color: inherit;
   }
   
   .link {
@@ -56,5 +62,28 @@
   .active::after {
     text-decoration: none;
     opacity: 1;
+  }
+
+
+  .button {
+    margin-left: 0.5rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #15171a;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .button:hover {
+    background-color: #380f39;
+  }
+  
+  @media (max-width: 768px) {
+    .button {
+      font-size: 0.9rem;
+    }
   }
   
