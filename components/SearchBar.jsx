@@ -18,13 +18,13 @@ const SearchBar = ({ onSearch }) => {
     <form className={styles.searchBar} onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Search"
+        placeholder="Search Here For Users"
         value={searchValue}
         onChange={handleInputChange}
         className={styles.searchInput}
       />
       <button type="submit" className={styles.searchButton}>
-        Search Here
+        Search
       </button>
     </form>
   );
