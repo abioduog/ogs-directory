@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 3005",
-    "build": "npm build",
-    "start": "npm start"
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.5.1",
