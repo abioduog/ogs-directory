@@ -26,7 +26,7 @@ const SignUp = () => {
           console.log("Success. The user is created in firebase");
           const usersProfileRef = db.collection('usersProfile').doc(authUser.user.uid);
           usersProfileRef.set({ uid: authUser.user.uid });
-          router.push("/logged_in");
+          router.push("/members");
         })
         .catch(error => {
           setError(error.message)
