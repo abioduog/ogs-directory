@@ -19,9 +19,6 @@ const Navbar = () => {
                     </a>
                 </Link>
                 <ul className={styles.menu}>
-                    {/* <li>
-                    <SearchBar />
-                    </li> */}
                     <li className={styles.menuItem}>
                         <Link href="/members">
                             <a className={`${styles.link} ${isActive('/members')}`}>Home</a>

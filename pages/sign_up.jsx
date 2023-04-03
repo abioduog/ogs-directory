@@ -9,6 +9,12 @@ import { Container, Row, Col, Button, Form, FormGroup, Input, Alert } from 'reac
 import styles from '../styles/Signup.module.css';
 
 const SignUp = () => {
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [occupation, setOccupation] = useState("");
+  const [website, setWebsite] = useState("");
+  const [social, setSocial] = useState("");
+
   const [email, setEmail] = useState("");
   const [passwordOne, setPasswordOne] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
@@ -20,18 +26,39 @@ const SignUp = () => {
 
   const onSubmit = event => {
     setError(null)
-    if (passwordOne === passwordTwo)
+    // if (passwordOne === passwordTwo)
+    // createUserWithEmailAndPassword(email, passwordOne)
+    //   .then(authUser => {
+    //     console.log("Success. The user is created in firebase");
+    //     const usersProfileRef = db.collection('usersProfile').doc(authUser.user.uid);
+    //     usersProfileRef.set({ uid: authUser.user.uid });
+    //     router.push("/members");
+    //   })
+    //   .catch(error => {
+    //     setError(error.message)
+    //   });
+
+    if (passwordOne === passwordTwo) {
       createUserWithEmailAndPassword(email, passwordOne)
         .then(authUser => {
           console.log("Success. The user is created in firebase");
           const usersProfileRef = db.collection('usersProfile').doc(authUser.user.uid);
-          usersProfileRef.set({ uid: authUser.user.uid });
+          usersProfileRef.set({
+            uid: authUser.user.uid,
+            email: authUser.user.email,
+            firstname,
+            lastname,
+            occupation,
+            website,
+            social,
+            image: 'https://firebasestorage.googleapis.com/v0/b/ogs-two.appspot.com/o/users%2Fdefault_profile_image.jpg?alt=media&token=b8c349c8-c952-4f69-8506-2c75d725fcaf' // Set an empty string as the default image value
+          });
           router.push("/members");
         })
         .catch(error => {
           setError(error.message)
         });
-    else
+    } else
       setError("Password do not match")
     event.preventDefault();
   };
@@ -50,6 +77,61 @@ const SignUp = () => {
               alignItems: 'center',
             }} onSubmit={onSubmit}>
               {error && <Alert color="danger">{error}</Alert>}
+              <FormGroup row>
+                <Col sm={20}>
+                  <Input
+                    type="text"
+                    value={firstname}
+                    onChange={(event) => setFirstname(event.target.value)}
+                    name="firstname"
+                    id="signUpFirstName"
+                    placeholder="First Name" />
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Col sm={20}>
+                  <Input
+                    type="text"
+                    value={lastname}
+                    onChange={(event) => setLastname(event.target.value)}
+                    name="lastname"
+                    id="signUpLastName"
+                    placeholder="Last Name" />
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Col sm={20}>
+                  <Input
+                    type="text"
+                    value={occupation}
+                    onChange={(event) => setOccupation(event.target.value)}
+                    name="occupation"
+                    id="signUpOccupation"
+                    placeholder="Occupation" />
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Col sm={20}>
+                  <Input
+                    type="text"
+                    value={website}
+                    onChange={(event) => setWebsite(event.target.value)}
+                    name="website"
+                    id="signUpWebsite"
+                    placeholder="Website" />
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Col sm={20}>
+                  <Input
+                    type="text"
+                    value={social}
+                    onChange={(event) => setSocial(event.target.value)}
+                    name="social"
+                    id="signUpSocial"
+                    placeholder="Social Media URL" />
+                </Col>
+              </FormGroup>
               <FormGroup row>
                 <Col sm={20}>
                   <Input

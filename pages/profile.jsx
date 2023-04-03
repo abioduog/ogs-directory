@@ -4,8 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { getDownloadURL, ref } from "firebase/storage";
 import { db, storage } from '../lib/firebase';
 import styles from "../styles/Profile.module.css";
-import ProfileNavbar from "../components/ProfileNavbar";
-import sanitize from "sanitize-filename"; 
+import ProfileNavbar from "../components/ProfileNavbar"; 
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
@@ -53,7 +52,7 @@ const Profile = () => {
     };
   }, [authUser]);
 
-  if (loading || !userData || !imageUrl) {
+  if (loading || !userData) {
     return <div>Loading...</div>;
   }
 
@@ -65,8 +64,15 @@ const Profile = () => {
       <ProfileNavbar />
       <div className={styles.mainContainer}>
         <div className={styles.profile}>
-          <div className={styles.imageContainer}>
+          {/* <div className={styles.imageContainer}>
             <img src={imageUrl} alt="Profile Picture" className={styles.image} />
+          </div> */}
+          <div className={styles.imageContainer}>
+            {imageUrl ? (
+              <img src={imageUrl} alt="Profile Picture" className={styles.image} />
+            ) : (
+              <div className={styles.noImage}>No Image</div>
+            )}
           </div>
           <div className={styles.textContainer}>
             <h1 className={styles.name}>{fullname}</h1>
