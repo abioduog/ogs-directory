@@ -46,7 +46,7 @@ const UserPage = () => {
   }
 
   const { firstname, lastname, occupation, website, image, email } = userData;
-  let imageUrl = 'https://firebasestorage.googleapis.com/v0/b/ogs-two.appspot.com/o/360_F_448593569_kOEPextTZPc2rEZnlq7E3eXPF5Bb2XSU.jpg?alt=media&token=9831e520-727e-474d-9571-a2b77f4a1d2c'
+  let imageUrl = image
   let fullname = firstname + ' ' + lastname
   return (
     <div>
