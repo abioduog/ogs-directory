@@ -6,6 +6,8 @@
   width: 100%;
   height: auto;
   padding-top: 50px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 /* For screens smaller than 1024px, set the grid to 2 columns */
