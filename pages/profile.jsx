@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import Link from 'next/link';
 import { useAuth } from "../context/AuthUserContext";
 import { doc, getDoc } from "firebase/firestore";
 import { getDownloadURL, ref } from "firebase/storage";
 import { db, storage } from '../lib/firebase';
 import styles from "../styles/Profile.module.css";
+import globalStyles from '../styles/global.module.css';
 import ProfileNavbar from "../components/ProfileNavbar"; 
 
 const Profile = () => {
@@ -64,14 +66,11 @@ const Profile = () => {
       <ProfileNavbar />
       <div className={styles.mainContainer}>
         <div className={styles.profile}>
-          {/* <div className={styles.imageContainer}>
-            <img src={imageUrl} alt="Profile Picture" className={styles.image} />
-          </div> */}
           <div className={styles.imageContainer}>
             {imageUrl ? (
-              <img src={imageUrl} alt="Profile Picture" className={styles.image} />
+              <img src={imageUrl} alt={fullname} className={styles.image} />
             ) : (
-              <div className={styles.noImage}>No Image</div>
+              <div className={styles.noImage}> {fullname} </div>
             )}
           </div>
           <div className={styles.textContainer}>
@@ -98,6 +97,11 @@ const Profile = () => {
                 </a>
               </div>
             </div>
+            <Link href="/add_event">
+              <a>
+                <button className={globalStyles.button}>Add Memeory</button>
+              </a>
+            </Link>
           </div>
         </div>
       </div>

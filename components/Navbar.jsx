@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from '../styles/Navbar.module.css';
-// import SearchBar from '../components/Searchbar';
+import globalStyles from '../styles/global.module.css';
 
 const Navbar = () => {
     const router = useRouter();
@@ -32,7 +32,7 @@ const Navbar = () => {
                     <li className={styles.menuItem}>
                         <Link href="/profile">
                             <a>
-                                <button className={styles.button}>Go to Profile</button>
+                                <button className={globalStyles.button}>Go to Profile</button>
                             </a>
                         </Link>
                     </li>
