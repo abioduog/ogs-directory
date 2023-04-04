@@ -1,0 +1,25 @@
+/* EventCard.module.css */
+.card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.author {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.description {
+    margin-bottom: 10px;
+}
+
+.content {
+    white-space: pre-wrap;
+}

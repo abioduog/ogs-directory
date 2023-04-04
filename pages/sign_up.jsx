@@ -26,18 +26,6 @@ const SignUp = () => {
 
   const onSubmit = event => {
     setError(null)
-    // if (passwordOne === passwordTwo)
-    // createUserWithEmailAndPassword(email, passwordOne)
-    //   .then(authUser => {
-    //     console.log("Success. The user is created in firebase");
-    //     const usersProfileRef = db.collection('usersProfile').doc(authUser.user.uid);
-    //     usersProfileRef.set({ uid: authUser.user.uid });
-    //     router.push("/members");
-    //   })
-    //   .catch(error => {
-    //     setError(error.message)
-    //   });
-
     if (passwordOne === passwordTwo) {
       createUserWithEmailAndPassword(email, passwordOne)
         .then(authUser => {
