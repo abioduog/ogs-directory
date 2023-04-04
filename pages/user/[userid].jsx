@@ -22,7 +22,6 @@ const UserPage = () => {
           console.log("No user")
           return;
         }
-        // const docRef = db.doc("usersProfile", userid);
         const docRef = db.doc(`usersProfile/${userid}`);
         console.log(docRef)
         const docSnap = await docRef.get();

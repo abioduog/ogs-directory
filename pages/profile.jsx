@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useAuth } from "../context/AuthUserContext";
 import { doc, getDoc } from "firebase/firestore";
 import { getDownloadURL, ref } from "firebase/storage";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { db, storage } from '../lib/firebase';
 import styles from "../styles/Profile.module.css";
 import globalStyles from '../styles/global.module.css';
@@ -13,7 +14,18 @@ const Profile = () => {
   const [imageUrl, setImageUrl] = useState(null);
   const [loadingUserData, setLoadingUserData] = useState(true);
   const { authUser, loading } = useAuth();
-
+  const [userEvents, setUserEvents] = useState([]);
+  const fetchUserEvents = async (uid) => {
+    const eventsRef = collection(db, "events");
+    const q = query(eventsRef, where("uid", "==", uid));
+    const querySnapshot = await getDocs(q);
+    const events = [];
+    querySnapshot.forEach((doc) => {
+      events.push({ id: doc.id, ...doc.data() });
+    });
+    setUserEvents(events);
+  };
+  
   useEffect(() => {
     let isMounted = true;
     const fetchUserData = async () => {
@@ -25,11 +37,11 @@ const Profile = () => {
         }
         const docRef = doc(db, "usersProfile", authUser.uid);
         const docSnap = await getDoc(docRef);
-
+  
         if (docSnap.exists()) {
           const data = docSnap.data();
           setUserData(data);
-
+  
           // Check if the authenticated user ID matches a filename in Firestore storage
           const userId = authUser.uid;
           if (data.image) {
@@ -42,17 +54,21 @@ const Profile = () => {
           console.log("No such document!");
         }
         if (isMounted) setLoadingUserData(false);
+  
+        // Call the fetchUserEvents function after the user data is fetched
+        fetchUserEvents(authUser.uid);
       } catch (error) {
         console.error(error);
         if (isMounted) setLoadingUserData(false);
       }
     };
-
+  
     fetchUserData();
     return () => {
       isMounted = false; // Add this line
     };
   }, [authUser]);
+  
 
   if (loading || !userData) {
     return <div>Loading...</div>;
@@ -104,6 +120,20 @@ const Profile = () => {
             </Link>
           </div>
         </div>
+        {/* EVENTS */}
+        <div className={styles.userEvents}>
+          <h2>My Memories</h2>
+          {userEvents.map((event) => (
+            <div key={event.id} className={styles.event}>
+              <h3>{event.title}</h3>
+              <p>Author: {event.author}</p>
+              <p>Description: {event.description}</p>
+              <p>Content: {event.content}</p>
+            </div>
+          ))}
+        </div>
+
+
       </div>
     </div>
   );

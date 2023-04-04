@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from '../styles/VerticalCard.module.css';
+import { AiOutlineLinkedin } from "react-icons/ai";
+import { FaBeer } from 'react-icons/fa';
 
 const VerticalCard = ({
   imageSrc,
@@ -18,6 +20,9 @@ const VerticalCard = ({
           <h2 className={styles.fullName}>{fullName}</h2>
           <p className={styles.jobDescription}>{jobDescription}</p>
           <div className={styles.contact}>
+          
+            <AiOutlineLinkedin />
+            <FaBeer />
             <a href={website} className={styles.website}>
               {website}
             </a>

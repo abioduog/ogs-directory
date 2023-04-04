@@ -3,12 +3,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: 2.5rem;
     background-color: transparent;
   }
   
   .searchInput {
-    /* flex-grow: 1; */
     padding: 0.5rem;
     padding-left: 7%;
     padding-right: 7%;
