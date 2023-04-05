@@ -119,6 +119,9 @@
 
   .userEvents {
     margin: 10px;
+    width: 100%;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
   }
 }
 
@@ -140,6 +143,9 @@
 
   .userEvents {
     margin: 10px;
+    width: 100%;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
   }
 }
 
@@ -161,6 +167,9 @@
 
   .userEvents {
     margin: 10px;
+    width: 100%;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
   }
 }
 
@@ -177,6 +186,9 @@
 
   .userEvents {
     margin: 10px;
+    width: 100%;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
   }
 }
 
@@ -193,6 +205,9 @@
 
   .userEvents {
     margin: 10px;
+    width: 100%;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
   }
 }
 
