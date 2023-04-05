@@ -9,18 +9,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px;
+    padding: 10px;
     color: #fff;
   }
 
   .navbar a {
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
     font-size: 16px;
   }
   
   .link {
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
     position: relative;
   }
@@ -32,7 +32,7 @@
   
   .menu {
     display: flex;
-    list-style: none;
+    list-style: none !important;
     margin: 16px;
     padding: 0;
   }
@@ -41,7 +41,7 @@
     margin-left: 16px;
   }
   
-  .link::after {
+  /* .link::after {
     text-decoration: none;
     content: '';
     display: block;
@@ -53,14 +53,24 @@
     background-color: #fff;
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
-  }
+  } */
   
   .link:hover::after {
-    text-decoration: none;
+    text-decoration: none !important;
     opacity: 1;
   }
   
   .active::after {
     text-decoration: none;
     opacity: 1;
+  }
+
+  .whiteText {
+    color: white !important;
+    text-decoration: none !important;
+  }
+
+  .whiteText:hover {
+    color: rgb(181, 181, 181) !important;
+    text-decoration: none !important;
   }

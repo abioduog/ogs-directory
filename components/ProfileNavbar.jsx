@@ -1,13 +1,30 @@
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useAuth } from '../context/AuthUserContext';
+import {
+    Collapse,
+    Navbar as ReactstrapNavbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    Button,
+} from 'reactstrap';
 import styles from '../styles/Navbar.module.css';
-import Pstyles from '.././styles/Signup.module.css';
-import { useAuth } from "../context/AuthUserContext";
-import { Button } from 'reactstrap';
 
 const ProfileNavbar = () => {
     const router = useRouter();
     const { signOut } = useAuth();
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => setIsOpen(!isOpen);
+
+    const signOutButton = () => {
+        signOut();
+        router.push('/');
+    };
 
     const isActive = (pathname) => {
         return router.pathname === pathname ? styles.active : '';
@@ -15,36 +32,47 @@ const ProfileNavbar = () => {
 
     return (
         <div className={styles.hero}>
-            <nav className={styles.navbar}>
+            <ReactstrapNavbar className={styles.navbar} dark expand="md" style={{ backgroundColor: 'black' }}>
                 <Link href="/members">
-                    <a className={styles.link}>
-                        <span className={styles.logo}>OGS 88 Portal</span>
+                    <a className={`${styles.link} ${styles.noUnderline}`}>
+                        <NavbarBrand className={styles.whiteText}>OGS 88 Portal</NavbarBrand>
                     </a>
                 </Link>
-                <ul className={styles.menu}>
-                    <li className={styles.menuItem}>
-                        <Link href="/members">
-                            <a className={`${styles.link} ${isActive('/members')}`}>Home</a>
-                        </Link>
-                    </li>
-                    <li className={styles.menuItem}>
-                        <Link href="/events">
-                            <a className={`${styles.link} ${isActive('/events')}`}>Events and Activities</a>
-                        </Link>
-                    </li>
-                    <li className={styles.menuItem}>
-                        <Link href="/edit_profile">
-                            <a className={`${styles.link} ${isActive('/edit_profile')}`}>Edit Profile</a>
-                        </Link>
-                    </li>
-                    {/* <li className={styles.menuItem}>
-                    <Button onClick={signOut}>Sign out</Button>
-                  </li> */}
-                </ul>
-            </nav>
+                <NavbarToggler onClick={toggle} />
+                <Collapse isOpen={isOpen} navbar>
+                    <Nav className="ml-auto" navbar>
+                        <NavItem>
+                            <Link href="/members">
+                                <a className={`${styles.link} ${styles.noUnderline} ${isActive('/members')}`}>
+                                    <NavLink className={styles.whiteText}>Home</NavLink>
+                                </a>
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link href="/events">
+                                <a className={`${styles.link} ${styles.noUnderline} ${isActive('/events')}`}>
+                                    <NavLink className={styles.whiteText}>Events and Activities</NavLink>
+                                </a>
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link href="/edit_profile">
+                                <a className={`${styles.link} ${styles.noUnderline} ${isActive('/edit_profile')}`}>
+                                    <NavLink className={styles.whiteText}>Edit Profile</NavLink>
+                                </a>
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink className={styles.link}>
+                                <Button onClick={signOutButton} className={styles.whiteButton}>Sign out</Button>
+                            </NavLink>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </ReactstrapNavbar>
         </div>
-
     );
 };
 
 export default ProfileNavbar;
+
