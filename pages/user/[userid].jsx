@@ -4,7 +4,9 @@ import { collection, doc, getDocs, getDoc, query, where } from "firebase/firesto
 import db from "../../firebase/config";
 
 import styles from '../../styles/Profile.module.css';
+import globalStyles from '../../styles/global.module.css';
 import Navbar from '../../components/Navbar';
+import { FaLinkedin, FaFacebook } from 'react-icons/fa';
 
 const UserPage = () => {
   const [userData, setUserData] = useState(null);
@@ -50,7 +52,7 @@ const UserPage = () => {
   }, [userid]);
 
   if (!userData) {
-    return <div>Loading...</div>;
+    return <div className={globalStyles.loader}>Loading</div>;
   }
 
   const { firstname, lastname, occupation, website, image, email } = userData;
@@ -76,7 +78,8 @@ const UserPage = () => {
               <p className={styles.email}>{email}</p>
               <p className={styles.website}>{website}</p>
               <div className={styles.social}>
-                {/* Add appropriate social media links for the user */}
+                <a href={''}><FaLinkedin className={globalStyles.iconStyle} /></a>
+                <a href={''}><FaFacebook className={globalStyles.iconStyle} /></a>
               </div>
             </div>
           </div>

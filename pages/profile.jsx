@@ -8,6 +8,7 @@ import { db, storage } from '../lib/firebase';
 import styles from "../styles/Profile.module.css";
 import globalStyles from '../styles/global.module.css';
 import ProfileNavbar from "../components/ProfileNavbar"; 
+import { FaLinkedin, FaFacebook } from 'react-icons/fa';
 
 
 const Profile = () => {
@@ -100,20 +101,10 @@ const Profile = () => {
               <p className={styles.phoneNumber}>{phoneNumber}</p>
               <p className={styles.website}>{website}</p>
               <div className={styles.social}>
-                <a href="https://www.linkedin.com/in/johndoe">
-                  <img
-                    src="https://firebasestorage.googleapis.com/v0/b/ogs-two.appspot.com/o/socials%2Fpng-transparent-linkedin-icon-linkedin-text-rectangle-logo-removebg-preview.png?alt=media&token=acfb99a3-7732-4eef-a365-4c85722ab7f5"
-                    alt="LinkedIn"
-                    className={styles.icon}
-                  />
-                </a>
-                <a href="https://www.github.com/johndoe">
-                  <img
-                    src="https://firebasestorage.googleapis.com/v0/b/ogs-two.appspot.com/o/socials%2F19-198304_github-logo-png-transparent-github-logo-png-png-removebg-preview.png?alt=media&token=fe61d559-ad91-429f-8adb-804578515fb5"
-                    alt="GitHub"
-                    className={styles.icon}
-                  />
-                </a>
+              <div className={styles.social}>
+                <a href={''}><FaLinkedin className={globalStyles.iconStyle} /></a>
+                <a href={''}><FaFacebook className={globalStyles.iconStyle} /></a>
+              </div>
               </div>
             </div>
             <Link href="/add_event">

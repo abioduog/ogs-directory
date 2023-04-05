@@ -57,3 +57,10 @@
     height: 100vh;
     font-size: 30px;
 }
+
+.iconStyle {
+    font-size: 24px;
+    color: white;
+    margin: 5px;
+    cursor: pointer;
+  }
