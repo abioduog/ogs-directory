@@ -19,7 +19,7 @@ const UserPage = () => {
     const events = [];
     querySnapshot.forEach((doc) => {
       events.push({ id: doc.id, ...doc.data() });
-    });
+    });   
     setUserEvents(events);
   };
 
