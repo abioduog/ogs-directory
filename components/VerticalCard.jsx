@@ -1,13 +1,5 @@
 import React from 'react';
 import styles from '../styles/VerticalCard.module.css';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-
-// const iconStyles = {
-//   fontSize: '24px',
-//   marginRight: '10px',
-//   color: 'white',
-// };
-
 
 const VerticalCard = ({
   imageSrc,
@@ -25,9 +17,7 @@ const VerticalCard = ({
         <div className={styles.content}>
           <h2 className={styles.fullName}>{fullName}</h2>
           <p className={styles.jobDescription}>{jobDescription}</p>
-          <div className={styles.contact}>
-          
-            <LinkedInIcon />
+          <div className={styles.contact}> 
             <a href={website} className={styles.website}>
               {website}
             </a>

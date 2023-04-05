@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/AuthUserContext';
 
-import {Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 import UsersProfile from '../components/Users';
 import styles from '.././styles/global.module.css';
@@ -12,19 +12,25 @@ const Members = () => {
   const { authUser, loading, signOut } = useAuth();
   const router = useRouter();
 
+  // New state variable for tracking authentication status
+  const [isAuthenticating, setIsAuthenticating] = useState(true);
+
   // Listen for changes on loading and authUser, redirect if needed
   useEffect(() => {
-    if (!loading && !authUser)
-      router.push('/')
-  }, [authUser, loading])
+    if (!loading && !authUser) {
+      router.push('/');
+    } else if (!loading && authUser) {
+      setIsAuthenticating(false);
+    }
+  }, [authUser, loading]);
 
   return (
     <div>
       <Navbar />
       <div className={styles.body}>
-        {loading ? (
+        {isAuthenticating ? (
           <Row>
-            <Col>Loading....</Col>
+            <Col className={styles.loader}>Loading</Col>
           </Row>
         ) : (
           <>
@@ -35,8 +41,9 @@ const Members = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Members;
+
 

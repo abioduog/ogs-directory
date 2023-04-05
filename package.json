@@ -11,6 +11,7 @@
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@heroicons/react": "^2.0.17",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.11.16",
     "bootstrap": "^4.6.0",

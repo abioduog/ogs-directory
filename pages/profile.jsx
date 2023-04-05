@@ -9,6 +9,7 @@ import styles from "../styles/Profile.module.css";
 import globalStyles from '../styles/global.module.css';
 import ProfileNavbar from "../components/ProfileNavbar"; 
 
+
 const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
@@ -71,7 +72,9 @@ const Profile = () => {
   
 
   if (loading || !userData) {
-    return <div className={globalStyles.loader}>Loading...</div>;
+    return <div className={globalStyles.loader}>Loading
+          </div>;
+    
   }
 
   const { firstname, lastname, occupation, website, email, phoneNumber } = userData;
