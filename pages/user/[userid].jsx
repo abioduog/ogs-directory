@@ -20,7 +20,7 @@ const UserPage = () => {
     const querySnapshot = await getDocs(q);
     const events = [];
     querySnapshot.forEach((doc) => {
-      events.push({ id: doc.id, ...doc.data() });
+      events.push({ id: doc.id, ...doc.data() }); 
     });   
     setUserEvents(events);
   };
@@ -90,7 +90,7 @@ const UserPage = () => {
             <div key={event.id} className={styles.event}>
               <h3>{event.title}</h3>
               <p>Author: {event.author}</p>
-              <p>Description: {event.description}</p>
+              <p>Description: {event.description}</p> 
               <p>Content: {event.content}</p>
             </div>
           ))}
