@@ -1,7 +1,13 @@
 import React from 'react';
 import styles from '../styles/VerticalCard.module.css';
-import { AiOutlineLinkedin } from "react-icons/ai";
-import { FaBeer } from 'react-icons/fa';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+
+// const iconStyles = {
+//   fontSize: '24px',
+//   marginRight: '10px',
+//   color: 'white',
+// };
+
 
 const VerticalCard = ({
   imageSrc,
@@ -21,8 +27,7 @@ const VerticalCard = ({
           <p className={styles.jobDescription}>{jobDescription}</p>
           <div className={styles.contact}>
           
-            <AiOutlineLinkedin />
-            <FaBeer />
+            <LinkedInIcon />
             <a href={website} className={styles.website}>
               {website}
             </a>

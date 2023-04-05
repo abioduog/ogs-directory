@@ -3,6 +3,8 @@ import { useAuth } from '../context/AuthUserContext';
 import { doc, addDoc, collection } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import styles from '../styles/EditProfile.module.css';
+import globalStyles from '../styles/global.module.css';
+import { useRouter } from 'next/router';
 import {
     Container,
     Row,
@@ -18,6 +20,7 @@ import {
 
 const AddEvent = () => {
     const { authUser } = useAuth();
+    const router = useRouter();
     const [formData, setFormData] = useState({
         title: '',
         author: '',
@@ -53,13 +56,14 @@ const AddEvent = () => {
                 description: '',
                 content: '',
             });
+            router.push('/profile');
         } catch (error) {
             console.error(error);
         }
     };
 
     if (!authUser) {
-        return <div>Loading...</div>;
+        return <div className={globalStyles}>Loading...</div>;
     }
 
     return (
@@ -67,6 +71,11 @@ const AddEvent = () => {
             <div className={styles.container}>
                 <Row>
                     <Col>
+                        <Row>
+                            <Col>
+                                <h2>Add Memory</h2>
+                            </Col>
+                        </Row>
                         <Form onSubmit={handleSubmit}>
                             <FormGroup>
                                 <Label for="title">Event Title</Label>

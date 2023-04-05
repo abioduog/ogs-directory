@@ -71,7 +71,7 @@ const Profile = () => {
   
 
   if (loading || !userData) {
-    return <div>Loading...</div>;
+    return <div className={globalStyles.loader}>Loading...</div>;
   }
 
   const { firstname, lastname, occupation, website, email, phoneNumber } = userData;

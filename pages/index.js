@@ -1,31 +1,36 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { useAuth } from '../context/AuthUserContext';
 
-import {Container, Row, Col, Button, Form, FormGroup, Label, Input, Alert} from 'reactstrap';
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import styles from '../styles/Signup.module.css'
+import styles from '../styles/Signup.module.css';
 
-export default function Home() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
   const { signInWithEmailAndPassword } = useAuth();
 
-  const onSubmit = event => {
-    setError(null)
-    signInWithEmailAndPassword(email, password)
-    .then(authUser => {
-      console.log("Success. The user is created in firebase")
-      router.push('/members');
-    })
-    .catch(error => {
-      setError(error.message)
-    });
+  const onSubmit = (event) => {
     event.preventDefault();
+    setError(null);
+    setSubmitting(true);
+    signInWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        console.log("Success. The user is logged in with firebase");
+        router.push('/members');
+        setSubmitting(false);
+      })
+      .catch((error) => {
+        setError(error.message);
+        setSubmitting(false);
+      });
   };
 
   return (
@@ -38,7 +43,7 @@ export default function Home() {
         </Row>
         <Row style={{ maxWidth: '400px', margin: 'auto' }}>
           <Col>
-            <Form 
+            <Form
               style={{
                 maxWidth: '400px',
                 margin: 'auto',
@@ -47,10 +52,10 @@ export default function Home() {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
-            onSubmit={onSubmit}>
+              onSubmit={onSubmit}
+            >
               {error && <Alert color="danger">{error}</Alert>}
               <FormGroup row>
-                {/* <Label for="loginEmail" sm={4}>Email</Label> */}
                 <Col sm={20}>
                   <Input
                     type="email"
@@ -58,11 +63,11 @@ export default function Home() {
                     onChange={(event) => setEmail(event.target.value)}
                     name="email"
                     id="loginEmail"
-                    placeholder="Email" />
+                    placeholder="Email"
+                  />
                 </Col>
               </FormGroup>
               <FormGroup row>
-                {/* <Label for="loginPassword" sm={4}>Password</Label> */}
                 <Col sm={20}>
                   <Input
                     type="password"
@@ -70,12 +75,13 @@ export default function Home() {
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                     id="loginPassword"
-                    placeholder="Password" />
+                    placeholder="Password"
+                  />
                 </Col>
               </FormGroup>
               <FormGroup row>
                 <Col>
-                  <Button>Login</Button>
+                  <Button disabled={submitting}>Login</Button>
                 </Col>
               </FormGroup>
               <FormGroup row>
@@ -88,5 +94,6 @@ export default function Home() {
         </Row>
       </Container>
     </div>
-  )
+  );
 }
+

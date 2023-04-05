@@ -56,6 +56,11 @@ const SignUp = () => {
       <Container className="text-center" style={{ padding: '40px, 0px', justifyContent: 'center' }}>
         <Row>
           <Col>
+            <h2>Sign Up</h2>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             <Form style={{
               maxWidth: '400px',
               margin: 'auto',
