@@ -1,7 +1,6 @@
 .hero {
     position: relative;
     background-color: #09040f;
-    /* position: fixed; */
     width: 100%;
   }
 
@@ -11,6 +10,9 @@
     justify-content: space-between;
     padding: 10px;
     color: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
   }
 
   .navbar a {
