@@ -78,15 +78,6 @@
   width: 50%;
   margin-top: 20px;
   margin-left: 40px;
-  max-height: 100vh; /* Adjust this value according to your needs */
-  overflow-y: auto; /* Enable vertical scrolling */
-  overflow-x: hidden;
-  -ms-overflow-style: none; /* Internet Explorer and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-.userEvents::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
 }
 
 
@@ -119,9 +110,6 @@
 
   .userEvents {
     margin: 10px;
-    width: 100%;
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden;
   }
 }
 
@@ -143,9 +131,7 @@
 
   .userEvents {
     margin: 10px;
-    width: 100%;
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden;
+    width: 70%;
   }
 }
 
@@ -167,9 +153,6 @@
 
   .userEvents {
     margin: 10px;
-    width: 100%;
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden;
   }
 }
 
@@ -186,9 +169,6 @@
 
   .userEvents {
     margin: 10px;
-    width: 100%;
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden;
   }
 }
 
@@ -202,12 +182,8 @@
   .profile {
     width: 100%;
   }
-
   .userEvents {
     margin: 10px;
-    width: 100%;
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden;
   }
 }
 
@@ -222,9 +198,22 @@
     width: 50%;
   }
 
-  .userEvents {
-    margin: 10px;
-  }
+    .userEvents {
+      margin: 10px;
+      max-height: 100vh;
+      /* Adjust this value according to your needs */
+      overflow-y: auto;
+      /* Enable vertical scrolling */
+      overflow-x: hidden;
+      -ms-overflow-style: none;
+      /* Internet Explorer and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    .userEvents::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, and Opera */
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -241,5 +230,18 @@
 
   .userEvents {
     margin: 10px;
+    max-height: 100vh;
+    /* Adjust this value according to your needs */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    /* Internet Explorer and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  .userEvents::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
   }
 }
