@@ -75,9 +75,8 @@
 }
 
 .userEvents {
-  width: 50%;
   margin-top: 20px;
-  margin-left: 40px;
+  padding: 10px;
 }
 
 
@@ -109,7 +108,8 @@
   }
 
   .userEvents {
-    margin: 10px;
+    padding: 10px;
+    /* width: 90%; */
   }
 }
 
@@ -130,8 +130,8 @@
   }
 
   .userEvents {
-    margin: 10px;
-    width: 70%;
+    padding: 10px;
+    /* width: 100%; */
   }
 }
 
@@ -149,10 +149,11 @@
 
   .profile {
     width: 100%;
+    /* width: 95%; */
   }
 
   .userEvents {
-    margin: 10px;
+    padding: 10px;
   }
 }
 
@@ -168,7 +169,8 @@
   }
 
   .userEvents {
-    margin: 10px;
+    padding: 10px;
+    /* width: 95%; */
   }
 }
 
@@ -183,7 +185,7 @@
     width: 100%;
   }
   .userEvents {
-    margin: 10px;
+    padding: 10px;
   }
 }
 
