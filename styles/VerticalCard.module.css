@@ -1,5 +1,4 @@
-
-.gridContainer{
+.gridContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 1fr;
@@ -7,26 +6,31 @@
   width: 100%;
   height: auto;
   padding-top: 50px;
-  /* padding-left: 2%;
-  padding-right: 2%; */
 }
 
-/* For screens smaller than 1024px, set the grid to 2 columns */
-@media (max-width: 1024px) {
+/* For screens smaller than 1200px, set the grid to 3 columns */
+@media (max-width: 1200px) {
   .gridContainer {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* For screens smaller than 992px, set the grid to 2 columns */
+@media (max-width: 992px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* For screens smaller than 768px, set the grid to 1 column */
 @media (max-width: 768px) {
   .gridContainer {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
-/* For screens smaller than 466px, set the grid to 1 column */
-@media (max-width: 466px) {
+/* For screens smaller than 576px (extra small), set the grid to 1 column */
+@media (max-width: 576px) {
   .gridContainer {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -105,7 +109,7 @@
   align-items: center;
   width: 100%;
   margin-top: 5px;
-  
+
 }
 
 .website {
