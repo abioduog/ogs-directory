@@ -199,14 +199,10 @@
     .userEvents {
       margin: 10px;
       max-height: 100vh;
-      /* Adjust this value according to your needs */
-      overflow-y: auto;
-      /* Enable vertical scrolling */
-      overflow-x: hidden;
-      -ms-overflow-style: none;
-      /* Internet Explorer and Edge */
-      scrollbar-width: none;
-      /* Firefox */
+      overflow-y: auto; /* Adjust this value according to your needs */
+      overflow-x: hidden;  /* Enable vertical scrolling */
+      -ms-overflow-style: none; /* Internet Explorer and Edge */
+      scrollbar-width: none; /* Firefox */
     }
 
     .userEvents::-webkit-scrollbar {
@@ -228,6 +224,7 @@
 
   .userEvents {
     margin: 10px;
+    margin-top: 52px;
     max-height: 100vh;
     /* Adjust this value according to your needs */
     overflow-y: auto;
