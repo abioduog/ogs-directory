@@ -86,23 +86,7 @@ const UserPage = () => {
             </div>
           </div>
         </div>
-        {/* EVENTS */}
-        {/* <div className={styles.userEvents}>
-          {userEvents.map((event) => (
-            <div key={event.id} className={styles.event} onClick={console.log(event.title)}>
-              {event.imageUrl && (
-                <div className={styles.eventImageContainer}>
-                  <img src={event.imageUrl} alt={event.title} className={styles.eventImage} />
-                </div>
-              )}
-              <h3>{event.title}</h3>
-              <p>Author: {event.author}</p>
-              <p>Description: {event.description}</p>
-              <p>Content: {event.content}</p>
-            </div>
-          ))}
-        </div> */}
-
+        {/* EVENTS IS MEMEORY */}
         <div className={styles.userEvents}>
           {userEvents.map((event) => (
             <div key={event.id} className={styles.event} onClick={console.log(event.title)}>

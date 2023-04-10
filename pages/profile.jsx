@@ -9,6 +9,8 @@ import styles from "../styles/Profile.module.css";
 import globalStyles from '../styles/global.module.css';
 import ProfileNavbar from "../components/ProfileNavbar";
 import { FaLinkedin, FaFacebook } from 'react-icons/fa';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 
 
 const Profile = () => {
@@ -118,12 +120,28 @@ const Profile = () => {
         <div className={styles.userEvents}>
           <h2>My Memories</h2>
           {userEvents.map((event) => (
-            <div key={event.id} className={styles.event}>
-              {event.imageUrl && (
+            <div key={event.id} className={styles.event} onClick={console.log(event.title)}>
+              {Array.isArray(event.imageUrls) ? (
+                <div className={styles.eventImageContainer}>
+                  <Carousel
+                    showArrows
+                    showStatus={false}
+                    showThumbs={false}
+                    verticalSwipe='standard'
+                    emulateTouch
+                  >
+                    {event.imageUrls.map((imageUrl, index) => (
+                      <div key={index}>
+                        <img src={imageUrl} alt={`${event.title} ${index + 1}`} className={styles.eventImage} />
+                      </div>
+                    ))}
+                  </Carousel>
+                </div>
+              ) : event.imageUrl ? (
                 <div className={styles.eventImageContainer}>
                   <img src={event.imageUrl} alt={event.title} className={styles.eventImage} />
                 </div>
-              )}
+              ) : null}
               <h3>{event.title}</h3>
               <p>Author: {event.author}</p>
               <p>Description: {event.description}</p>
