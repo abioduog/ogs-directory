@@ -123,6 +123,9 @@ const Profile = () => {
               <p>Author: {event.author}</p>
               <p>Description: {event.description}</p>
               <p>Content: {event.content}</p>
+              <div className={styles.imageContainer}>
+                <img src={event.imageUrl} alt={fullname} className={styles.image} />
+              </div>
             </div>
           ))}
         </div>
