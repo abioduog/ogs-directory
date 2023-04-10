@@ -55,7 +55,7 @@ const UserPage = () => {
     return <div className={globalStyles.loader}>Loading</div>;
   }
 
-  const { firstname, lastname, occupation, website, image, email } = userData;
+  const { firstname, lastname, occupation, facebook, linkedIn, website, image, email } = userData;
   let imageUrl = image;
   let fullname = firstname + ' ' + lastname;
   return (
@@ -78,8 +78,8 @@ const UserPage = () => {
               <p className={styles.email}>{email}</p>
               <p className={styles.website}>{website}</p>
               <div className={styles.social}>
-                <a href={''}><FaLinkedin className={globalStyles.iconStyle} /></a>
-                <a href={''}><FaFacebook className={globalStyles.iconStyle} /></a>
+                <a href={`https://${linkedIn}`}><FaLinkedin className={globalStyles.iconStyle} /></a>
+                <a href={`https://${facebook}`}><FaFacebook className={globalStyles.iconStyle} /></a>
               </div>
             </div>
           </div>

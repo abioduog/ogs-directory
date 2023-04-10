@@ -78,7 +78,7 @@ const Profile = () => {
 
   }
 
-  const { firstname, lastname, occupation, website, email, phoneNumber } = userData;
+  const { firstname, lastname, occupation, website, facebook, linkedIn, email, phoneNumber } = userData;
   const fullname = `${firstname} ${lastname}`;
 
   return (
@@ -102,8 +102,8 @@ const Profile = () => {
               <p className={styles.website}>{website}</p>
               <div className={styles.social}>
                 <div className={styles.social}>
-                  <a href={''}><FaLinkedin className={globalStyles.iconStyle} /></a>
-                  <a href={''}><FaFacebook className={globalStyles.iconStyle} /></a>
+                  <a href={`https://${linkedIn}`}><FaLinkedin className={globalStyles.iconStyle} /></a>
+                  <a href={`https://${facebook}`}><FaFacebook className={globalStyles.iconStyle} /></a>
                 </div>
               </div>
             </div>

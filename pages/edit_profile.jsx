@@ -81,7 +81,7 @@ const EditProfile = () => {
         occupation: formData.occupation,
         email: formData.email,
         website: formData.website,
-        social: formData.linkedIn,
+        linkedIn: formData.linkedIn,
         facebook: formData.facebook
       };
 
