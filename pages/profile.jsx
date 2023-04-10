@@ -129,7 +129,7 @@ const Profile = () => {
             </div>
           ))} */}
 
-          {userEvents.map((event) => (
+          {/* {userEvents.map((event) => (
             <div key={event.id} className={styles.event}>
               <div className={styles.eventImageContainer}>
                 {event.imageUrl ? (
@@ -141,7 +141,22 @@ const Profile = () => {
               <p>Description: {event.description}</p>
               <p>Content: {event.content}</p>
             </div>
+          ))} */}
+
+          {userEvents.map((event) => (
+            <div key={event.id} className={styles.event}>
+              {event.imageUrl && (
+                <div className={styles.eventImageContainer}>
+                  <img src={event.imageUrl} alt={event.title} className={styles.eventImage} />
+                </div>
+              )}
+              <h3>{event.title}</h3>
+              <p>Author: {event.author}</p>
+              <p>Description: {event.description}</p>
+              <p>Content: {event.content}</p>
+            </div>
           ))}
+
 
         </div>
 
