@@ -7,7 +7,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { db, storage } from '../lib/firebase';
 import styles from "../styles/Profile.module.css";
 import globalStyles from '../styles/global.module.css';
-import ProfileNavbar from "../components/ProfileNavbar"; 
+import ProfileNavbar from "../components/ProfileNavbar";
 import { FaLinkedin, FaFacebook } from 'react-icons/fa';
 
 
@@ -27,7 +27,7 @@ const Profile = () => {
     });
     setUserEvents(events);
   };
-  
+
   useEffect(() => {
     let isMounted = true;
     const fetchUserData = async () => {
@@ -39,11 +39,11 @@ const Profile = () => {
         }
         const docRef = doc(db, "usersProfile", authUser.uid);
         const docSnap = await getDoc(docRef);
-  
+
         if (docSnap.exists()) {
           const data = docSnap.data();
           setUserData(data);
-  
+
           // Check if the authenticated user ID matches a filename in Firestore storage
           const userId = authUser.uid;
           if (data.image) {
@@ -56,7 +56,7 @@ const Profile = () => {
           console.log("No such document!");
         }
         if (isMounted) setLoadingUserData(false);
-  
+
         // Call the fetchUserEvents function after the user data is fetched
         fetchUserEvents(authUser.uid);
       } catch (error) {
@@ -64,18 +64,18 @@ const Profile = () => {
         if (isMounted) setLoadingUserData(false);
       }
     };
-  
+
     fetchUserData();
     return () => {
       isMounted = false; // Add this line
     };
   }, [authUser]);
-  
+
 
   if (loading || !userData) {
     return <div className={globalStyles.loader}>Loading
-          </div>;
-    
+    </div>;
+
   }
 
   const { firstname, lastname, occupation, website, email, phoneNumber } = userData;
@@ -101,10 +101,10 @@ const Profile = () => {
               <p className={styles.phoneNumber}>{phoneNumber}</p>
               <p className={styles.website}>{website}</p>
               <div className={styles.social}>
-              <div className={styles.social}>
-                <a href={''}><FaLinkedin className={globalStyles.iconStyle} /></a>
-                <a href={''}><FaFacebook className={globalStyles.iconStyle} /></a>
-              </div>
+                <div className={styles.social}>
+                  <a href={''}><FaLinkedin className={globalStyles.iconStyle} /></a>
+                  <a href={''}><FaFacebook className={globalStyles.iconStyle} /></a>
+                </div>
               </div>
             </div>
             <Link href="/add_event">
@@ -117,17 +117,32 @@ const Profile = () => {
         {/* EVENTS */}
         <div className={styles.userEvents}>
           <h2>My Memories</h2>
-          {userEvents.map((event) => (
+          {/* {userEvents.map((event) => (
             <div key={event.id} className={styles.event}>
+              <div className={styles.eventImageContainer}>
+                <img src={event.imageUrl} alt={event.title} className={styles.eventImage} />
+              </div>
               <h3>{event.title}</h3>
               <p>Author: {event.author}</p>
               <p>Description: {event.description}</p>
               <p>Content: {event.content}</p>
-              <div className={styles.imageContainer}>
-                <img src={event.imageUrl} alt={fullname} className={styles.image} />
+            </div>
+          ))} */}
+
+          {userEvents.map((event) => (
+            <div key={event.id} className={styles.event}>
+              <div className={styles.eventImageContainer}>
+                {event.imageUrl ? (
+                  <img src={event.imageUrl} alt={event.title} className={styles.eventImage} />
+                ) : null}
               </div>
+              <h3>{event.title}</h3>
+              <p>Author: {event.author}</p>
+              <p>Description: {event.description}</p>
+              <p>Content: {event.content}</p>
             </div>
           ))}
+
         </div>
 
 
