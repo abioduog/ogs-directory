@@ -7,6 +7,8 @@ import styles from '../../styles/Profile.module.css';
 import globalStyles from '../../styles/global.module.css';
 import Navbar from '../../components/Navbar';
 import { FaLinkedin, FaFacebook } from 'react-icons/fa';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 
 const UserPage = () => {
   const [userData, setUserData] = useState(null);
@@ -85,14 +87,46 @@ const UserPage = () => {
           </div>
         </div>
         {/* EVENTS */}
-        <div className={styles.userEvents}>
+        {/* <div className={styles.userEvents}>
           {userEvents.map((event) => (
-            <div key={event.id} className={styles.event}>
+            <div key={event.id} className={styles.event} onClick={console.log(event.title)}>
               {event.imageUrl && (
                 <div className={styles.eventImageContainer}>
                   <img src={event.imageUrl} alt={event.title} className={styles.eventImage} />
                 </div>
               )}
+              <h3>{event.title}</h3>
+              <p>Author: {event.author}</p>
+              <p>Description: {event.description}</p>
+              <p>Content: {event.content}</p>
+            </div>
+          ))}
+        </div> */}
+
+        <div className={styles.userEvents}>
+          {userEvents.map((event) => (
+            <div key={event.id} className={styles.event} onClick={console.log(event.title)}>
+              {Array.isArray(event.imageUrls) ? (
+                <div className={styles.eventImageContainer}>
+                  <Carousel
+                    showArrows
+                    showStatus={false}
+                    showThumbs={false}
+                    verticalSwipe='standard'
+                    emulateTouch
+                  >
+                    {event.imageUrls.map((imageUrl, index) => (
+                      <div key={index}>
+                        <img src={imageUrl} alt={`${event.title} ${index + 1}`} className={styles.eventImage} />
+                      </div>
+                    ))}
+                  </Carousel>
+                </div>
+              ) : event.imageUrl ? (
+                <div className={styles.eventImageContainer}>
+                  <img src={event.imageUrl} alt={event.title} className={styles.eventImage} />
+                </div>
+              ) : null}
               <h3>{event.title}</h3>
               <p>Author: {event.author}</p>
               <p>Description: {event.description}</p>
