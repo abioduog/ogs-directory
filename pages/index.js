@@ -41,16 +41,19 @@ export default function Login() {
             <h2>Login</h2>
           </Col>
         </Row>
-        <Row style={{ maxWidth: '400px', margin: 'auto' }}>
+        <Row style={{ maxWidth: '300px', margin: 'auto' }}>
           <Col>
             <Form
               style={{
-                maxWidth: '400px',
-                margin: 'auto',
+                maxWidth: '300px',
+                // margin: 'auto',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
+                backgroundColor: '#f2f2f2',
+                padding: '40px',
+                borderRadius: '5px',
               }}
               onSubmit={onSubmit}
             >
