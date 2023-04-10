@@ -26,7 +26,8 @@ const EditProfile = () => {
     occupation: '',
     email: '',
     website: '',
-    social: '',
+    linkedIn: '',
+    facebook: '',
   });
   const [success, setSuccess] = useState(false);
   const [profileImage, setProfileImage] = useState(null);
@@ -80,7 +81,8 @@ const EditProfile = () => {
         occupation: formData.occupation,
         email: formData.email,
         website: formData.website,
-        social: formData.social,
+        social: formData.linkedIn,
+        facebook: formData.facebook
       };
 
       // Filter out empty or null values
@@ -192,11 +194,21 @@ const EditProfile = () => {
               <FormGroup>
                 <Input
                   type="text"
-                  name="social"
-                  id="social"
-                  value={formData.social}
+                  name="linkedIn"
+                  id="linkedIn"
+                  value={formData.linkedIn}
                   onChange={handleInputChange}
-                  placeholder='Social'
+                  placeholder='LinkedIn Url'
+                />
+              </FormGroup>
+              <FormGroup>
+                <Input
+                  type="text"
+                  name="facebook"
+                  id="facebook"
+                  value={formData.facebook}
+                  onChange={handleInputChange}
+                  placeholder='Facebook Url'
                 />
               </FormGroup>
               <FormGroup>

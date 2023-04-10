@@ -15,7 +15,7 @@ const SignUp = () => {
   const [website, setWebsite] = useState("");
 
   const [facebook, setFacebook] = useState("");
-  const [linkedin, setLinkedin] = useState("");
+  const [linkedIn, setLinkedin] = useState("");
 
 
   const [email, setEmail] = useState("");
@@ -41,9 +41,9 @@ const SignUp = () => {
             lastname,
             occupation,
             website,
-            linkedin,
+            linkedIn: linkedIn,
             facebook,
-            image: 'hhttps://firebasestorage.googleapis.com/v0/b/ogs-two.appspot.com/o/users%2Fdefault_profile_image.png?alt=media&token=3cfe1e0c-ccb7-46c8-81ec-307c48987878' // Set an empty string as the default image value
+            image: 'https://firebasestorage.googleapis.com/v0/b/ogs-two.appspot.com/o/users%2Fdefault_profile_image.png?alt=media&token=3cfe1e0c-ccb7-46c8-81ec-307c48987878' // Set an empty string as the default image value
           });
           router.push("/members");
         })
@@ -138,10 +138,10 @@ const SignUp = () => {
               <Col sm={20}>
                 <Input
                   type="text"
-                  value={linkedin}
+                  value={linkedIn}
                   onChange={(event) => setLinkedin(event.target.value)}
-                  name="linkedin"
-                  id="signUpLinkedin"
+                  name="linkedIn"
+                  id="signUpLinkedIn"
                   placeholder="LinkedIn URL" />
               </Col>
             </FormGroup>

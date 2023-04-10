@@ -19,7 +19,7 @@ const UsersProfile = () => {
         } catch (error) {
           console.error(error);
           imgUrl = await storage
-            .ref('users/default_profile_image.jpg')
+            .ref('users/default_profile_image.png')
             .getDownloadURL();
         }
         return {

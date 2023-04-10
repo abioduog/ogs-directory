@@ -3,11 +3,11 @@ import Link from 'next/link'
 
 import cardstyles from '../styles/VerticalCard.module.css';
 import { FaLinkedin, FaFacebook } from 'react-icons/fa';
-let linkedIn = 'https://www.linkedin.com/in/andrew-lee-0b0b3b1b3/'
-let facebook = 'https://www.facebook.com/andrew.lee.581'
+// let linkedIn = 'https://www.linkedin.com/in/andrew-lee-0b0b3b1b3/'
+// let facebook = 'https://www.facebook.com/andrew.lee.581'
 
 
-const UserProfileCard = ({ firstname, lastname, id, occupation, website, email, imgUrl }) => {
+const UserProfileCard = ({ firstname, lastname, id, occupation, website, linkedIn, facebook, email, imgUrl }) => {
 	let fullName = firstname + ' ' + lastname
 	let imageUrl = imgUrl
 	return (
@@ -26,8 +26,8 @@ const UserProfileCard = ({ firstname, lastname, id, occupation, website, email, 
 							{/* <a href={website} className={cardstyles.website}>{website}</a> */}
 							<a href={`mailto:${email}`} className={cardstyles.email}>{email}</a>
 							<div className={cardstyles.social}>
-								<a href={linkedIn}><FaLinkedin className={cardstyles.iconStyle} /></a>
-								<a href={facebook}><FaFacebook className={cardstyles.iconStyle} /></a>
+								<a href={`https://${linkedIn}`}><FaLinkedin className={cardstyles.iconStyle} /></a>
+								<a href={`https://${facebook}`}><FaFacebook className={cardstyles.iconStyle} /></a>
 							</div>
 						</div>
 					</div>
