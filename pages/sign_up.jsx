@@ -13,7 +13,10 @@ const SignUp = () => {
   const [lastname, setLastname] = useState("");
   const [occupation, setOccupation] = useState("");
   const [website, setWebsite] = useState("");
-  const [social, setSocial] = useState("");
+
+  const [facebook, setFacebook] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+
 
   const [email, setEmail] = useState("");
   const [passwordOne, setPasswordOne] = useState("");
@@ -38,7 +41,8 @@ const SignUp = () => {
             lastname,
             occupation,
             website,
-            social,
+            linkedin,
+            facebook,
             image: 'https://firebasestorage.googleapis.com/v0/b/ogs-two.appspot.com/o/users%2Fdefault_profile_image.jpg?alt=media&token=b8c349c8-c952-4f69-8506-2c75d725fcaf' // Set an empty string as the default image value
           });
           router.push("/members");
@@ -53,7 +57,7 @@ const SignUp = () => {
 
   return (
     <div className={styles.container}>
-      <Container className="text-center" style={{ padding: '40px, 0px', justifyContent: 'center' }}>
+      <Container className="text-center" style={{ padding: '10px, 0px', justifyContent: 'center' }}>
         <Row>
           <Col>
             <h2>Sign Up</h2>
@@ -61,14 +65,7 @@ const SignUp = () => {
         </Row>
         <Row>
           <Col>
-            <Form style={{
-              maxWidth: '400px',
-              margin: 'auto',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }} onSubmit={onSubmit}>
+            <Form className={styles.form} onSubmit={onSubmit}>
               {error && <Alert color="danger">{error}</Alert>}
               <FormGroup row>
                 <Col sm={20}>
@@ -117,17 +114,6 @@ const SignUp = () => {
               <FormGroup row>
                 <Col sm={20}>
                   <Input
-                    type="text"
-                    value={social}
-                    onChange={(event) => setSocial(event.target.value)}
-                    name="social"
-                    id="signUpSocial"
-                    placeholder="Social Media URL" />
-                </Col>
-              </FormGroup>
-              <FormGroup row>
-                <Col sm={20}>
-                  <Input
                     type="email"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
@@ -136,6 +122,31 @@ const SignUp = () => {
                     placeholder="Email" />
                 </Col>
               </FormGroup>
+
+              <FormGroup row>
+              <Col sm={20}>
+                <Input
+                  type="text"
+                  value={facebook}
+                  onChange={(event) => setFacebook(event.target.value)}
+                  name="facebook"
+                  id="signUpFacebook"
+                  placeholder="Facebook URL" />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col sm={20}>
+                <Input
+                  type="text"
+                  value={linkedin}
+                  onChange={(event) => setLinkedin(event.target.value)}
+                  name="linkedin"
+                  id="signUpLinkedin"
+                  placeholder="LinkedIn URL" />
+              </Col>
+            </FormGroup>
+
+
               <FormGroup row>
                 <Col sm={20}>
                   <Input

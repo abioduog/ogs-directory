@@ -23,7 +23,7 @@ const UserProfileCard = ({ firstname, lastname, id, occupation, website, email, 
 						<h2 className={cardstyles.fullName}>{fullName}</h2>
 						<p className={cardstyles.jobDescription}>{occupation}</p>
 						<div className={cardstyles.contact}>
-							<a href={website} className={cardstyles.website}>{website}</a>
+							{/* <a href={website} className={cardstyles.website}>{website}</a> */}
 							<a href={`mailto:${email}`} className={cardstyles.email}>{email}</a>
 							<div className={cardstyles.social}>
 								<a href={linkedIn}><FaLinkedin className={cardstyles.iconStyle} /></a>

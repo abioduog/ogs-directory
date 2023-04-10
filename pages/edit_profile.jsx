@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'; 
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/AuthUserContext';
 import { doc, updateDoc } from 'firebase/firestore';
@@ -23,6 +23,7 @@ const EditProfile = () => {
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
+    occupation: '',
     email: '',
     website: '',
     social: '',
@@ -69,30 +70,31 @@ const EditProfile = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
       // Update user information in Firestore
       const userRef = doc(db, 'usersProfile', authUser.uid);
       const updatedData = {
         firstname: formData.firstname,
         lastname: formData.lastname,
+        occupation: formData.occupation,
         email: formData.email,
         website: formData.website,
         social: formData.social,
       };
-  
+
       // Filter out empty or null values
       const filteredData = Object.fromEntries(
         Object.entries(updatedData).filter(([_, v]) => v != null && v !== "")
       );
-  
+
       await updateDoc(userRef, filteredData);
-  
+
       // Update profile image in Firestore Storage
       if (profileImage) {
         const storageRef = storage.ref();
         const imageRef = storageRef.child(`users/${authUser.uid}`);
-  
+
         // Check if an existing image exists and delete it if it does
         try {
           const existingImageUrl = await imageRef.getDownloadURL();
@@ -102,14 +104,14 @@ const EditProfile = () => {
         } catch (error) {
           console.log('No existing image found, creating a new one.');
         }
-  
+
         // Upload the new profile image
         await imageRef.put(profileImage);
         const downloadURL = await imageRef.getDownloadURL();
         setProfileImageUrl(downloadURL);
         await updateDoc(userRef, { image: downloadURL });
       }
-  
+
       // Show success message and redirect to profile page
       setSuccess(true);
       setTimeout(() => {
@@ -119,8 +121,8 @@ const EditProfile = () => {
       console.error(error);
     }
   };
-  
-  
+
+
 
   if (!authUser) {
     return <div>Loading...</div>;
@@ -128,58 +130,73 @@ const EditProfile = () => {
 
   return (
     <div className={styles.gridContainer}>
+      <Row>
+        <Col>
+          <h2>Edit Profile</h2>
+        </Col>
+      </Row>
       <div className={styles.container}>
         <Row>
           <Col>
             <Form onSubmit={handleSubmit}>
               <FormGroup>
-                <Label for="firstname">First Name</Label>
                 <Input
                   type="text"
                   name="firstname"
                   id="firstname"
                   value={formData.firstname}
                   onChange={handleInputChange}
+                  placeholder='First Name'
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="lastname">Last Name</Label>
                 <Input
                   type="text"
                   name="lastname"
                   id="lastname"
                   value={formData.lastname}
                   onChange={handleInputChange}
+                  placeholder='Last Name'
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="email">Email</Label>
+                <Input
+                  type="text"
+                  name="occupation"
+                  id="occupation"
+                  value={formData.occupation}
+                  onChange={handleInputChange}
+                  placeholder='Occupation'
+                />
+              </FormGroup>
+              <FormGroup>
                 <Input
                   type="email"
                   name="email"
                   id="email"
                   value={formData.email}
                   onChange={handleInputChange}
+                  placeholder='Email'
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="website">Website</Label>
                 <Input
                   type="text"
                   name="website"
                   id="website"
                   value={formData.website}
                   onChange={handleInputChange}
+                  placeholder='Website'
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="social">Social Media Links</Label>
                 <Input
                   type="text"
                   name="social"
                   id="social"
                   value={formData.social}
                   onChange={handleInputChange}
+                  placeholder='Social'
                 />
               </FormGroup>
               <FormGroup>
@@ -203,7 +220,7 @@ const EditProfile = () => {
       </div>
     </div>
   );
-}  
+}
 
 export default EditProfile;
 

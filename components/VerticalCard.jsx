@@ -18,9 +18,9 @@ const VerticalCard = ({
           <h2 className={styles.fullName}>{fullName}</h2>
           <p className={styles.jobDescription}>{jobDescription}</p>
           <div className={styles.contact}> 
-            <a href={website} className={styles.website}>
+            {/* <a href={website} className={styles.website}>
               {website}
-            </a>
+            </a> */}
             <a href={`mailto:${email}`} className={styles.email}>
               {email}
             </a>
