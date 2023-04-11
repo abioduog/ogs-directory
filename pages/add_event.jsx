@@ -17,7 +17,6 @@
 //     Alert,
 // } from 'reactstrap';
 
-
 // const AddEvent = () => {
 //     const { authUser } = useAuth();
 //     const router = useRouter();
@@ -28,7 +27,7 @@
 //         content: '',
 //     });
 //     const [success, setSuccess] = useState(false);
-//     const [eventImage, setEventImage] = useState(null);
+//     const [eventImages, setEventImages] = useState([]); // Updated to hold an array of images
 
 //     const handleInputChange = (event) => {
 //         setFormData({
@@ -38,8 +37,8 @@
 //     };
 
 //     const handleImageChange = (event) => {
-//         if (event.target.files[0]) {
-//             setEventImage(event.target.files[0]);
+//         if (event.target.files.length > 0) {
+//             setEventImages(Array.from(event.target.files)); // Updated to handle multiple files
 //         }
 //     };
 
@@ -57,14 +56,19 @@
 
 //             const docRef = await addDoc(collection(db, 'events'), newEvent);
 
-//             if (eventImage) {
+//             if (eventImages.length > 0) {
 //                 const storageRef = storage.ref();
-//                 const imageRef = storageRef.child(`memories/${docRef.id}`);
+//                 const imageUrls = [];
 
-//                 await imageRef.put(eventImage);
-//                 const downloadURL = await imageRef.getDownloadURL();
+//                 for (const image of eventImages) {
+//                     const imageRef = storageRef.child(`memories/${docRef.id}/${image.name}`);
 
-//                 await updateDoc(doc(db, 'events', docRef.id), { imageUrl: downloadURL });
+//                     await imageRef.put(image);
+//                     const downloadURL = await imageRef.getDownloadURL();
+//                     imageUrls.push(downloadURL);
+//                 }
+
+//                 await updateDoc(doc(db, 'events', docRef.id), { imageUrls });
 //             }
 
 //             setSuccess(true);
@@ -136,12 +140,13 @@
 //                                 />
 //                             </FormGroup>
 //                             <FormGroup>
-//                                 <Label for="eventImage">Add Image (Optional)</Label>
+//                                 <Label for="eventImages">Add Images (Optional)</Label>
 //                                 <Input
 //                                     type="file"
-//                                     name="eventImage"
-//                                     id="eventImage"
+//                                     name="eventImages"
+//                                     id="eventImages"
 //                                     onChange={handleImageChange}
+//                                     multiple // Added 'multiple' attribute to allow multiple image selection
 //                                 />
 //                             </FormGroup>
 //                             <Button type="submit">Upload</Button>
@@ -159,8 +164,6 @@
 // };
 
 // export default AddEvent;
-
-
 
 
 
@@ -196,7 +199,7 @@ const AddEvent = () => {
         content: '',
     });
     const [success, setSuccess] = useState(false);
-    const [eventImages, setEventImages] = useState([]); // Updated to hold an array of images
+    const [eventImages, setEventImages] = useState([]);
 
     const handleInputChange = (event) => {
         setFormData({
@@ -207,8 +210,17 @@ const AddEvent = () => {
 
     const handleImageChange = (event) => {
         if (event.target.files.length > 0) {
-            setEventImages(Array.from(event.target.files)); // Updated to handle multiple files
+            setEventImages(Array.from(event.target.files));
         }
+    };
+
+    const isFormValid = () => {
+        return (
+            formData.title.trim() !== '' &&
+            formData.author.trim() !== '' &&
+            formData.description.trim() !== '' &&
+            formData.content.trim() !== ''
+        );
     };
 
     const handleSubmit = async (event) => {
@@ -315,10 +327,10 @@ const AddEvent = () => {
                                     name="eventImages"
                                     id="eventImages"
                                     onChange={handleImageChange}
-                                    multiple // Added 'multiple' attribute to allow multiple image selection
+                                    multiple
                                 />
                             </FormGroup>
-                            <Button type="submit">Upload</Button>
+                            <Button type="submit" disabled={!isFormValid()}>Upload</Button>
                             {success && (
                                 <Alert color="success" className="mt-3">
                                     Your event has been added successfully!

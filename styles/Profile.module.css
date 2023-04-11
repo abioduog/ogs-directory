@@ -78,7 +78,6 @@
 .userEvents {
   margin-top: 20px;
   padding: 10px;
-  max-width: 50%;
 }
 
 
@@ -130,6 +129,7 @@
 
   .userEvents {
     padding: 10px;
+    width: 100%;
   }
 }
 
@@ -151,6 +151,11 @@
 
   .userEvents {
     padding: 10px;
+    width: 100%;
+  }
+  .event {
+    background-color: transparent;
+    width: auto;
   }
 }
 
@@ -172,6 +177,7 @@
 
   .userEvents {
     padding: 10px;
+    width: 100%;
   }
 }
 
@@ -188,6 +194,7 @@
 
   .userEvents {
     padding: 10px;
+    width: 100%;
   }
 }
 
@@ -203,6 +210,7 @@
   }
   .userEvents {
     padding: 10px;
+    width: 100%;
   }
 }
 
