@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 600px;
+    max-width: 400px;
     height: auto;
     color: black;
     background-color: #f2f2f2;
@@ -30,10 +30,14 @@
   }
   
   .form {
-    max-width: 400px;
+    max-width: 600px;
     margin: auto;
     background-color: #f2f2f2;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
   .alert {
@@ -46,4 +50,50 @@
       padding: 16px;
     }
   }
+
+  .imagePreview {
+    width: 130px;
+    height: 130px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+  }
+  .previewImg {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+  }
+  
+  .customFileUpload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 2px;
+    cursor: pointer;
+    background-color: #989898;
+    color: #fff;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  }
+  
+  .customFileUpload:hover {
+    background-color: #5e5e5e;
+  }
+
+  .fileInput {
+    display: none;
+  }
+  
   

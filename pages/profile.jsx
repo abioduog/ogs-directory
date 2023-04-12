@@ -87,7 +87,10 @@ const Profile = () => {
     <div>
       <ProfileNavbar />
       <div className={styles.mainContainer}>
+
+
         <div className={styles.profile}>
+
           <div className={styles.imageContainer}>
             {imageUrl ? (
               <img src={imageUrl} alt={fullname} className={styles.image} />
@@ -142,6 +145,19 @@ const Profile = () => {
                   <img src={event.imageUrl} alt={event.title} className={styles.eventImage} />
                 </div>
               ) : null}
+
+              {/* <div className={styles.imageCover}>
+                <span>
+                  <img src={event.imageUrl} alt="Image description"/>
+                </span>
+              </div>
+
+              <div className={styles.authorImage}>
+                <img src={event.imageUrl} alt="Author name" />
+                <span>Author Name</span>
+              </div>  */}
+
+
               <h3>{event.title}</h3>
               <p>Author: {event.author}</p>
               <p>Description: {event.description}</p>

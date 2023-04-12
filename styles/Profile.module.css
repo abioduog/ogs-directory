@@ -33,6 +33,37 @@
   object-fit: cover;
 }
 
+
+
+
+
+.imgCover {
+  line-height: 0;
+  width: 100%;
+}
+.imgCover span {
+  height: 100%;
+  width: 100%;
+}
+.imgCover img {
+  object-fit: cover;
+}
+
+.authorImage {
+  margin-right: 0.5rem;
+  vertical-align: top;
+}
+.authorImage img {
+  max-height: 25px;
+  max-width: 25px;
+  /* border-radius: 50%; */
+}
+
+
+
+
+
+
 .textContainer {
   display: flex;
   flex-direction: column;

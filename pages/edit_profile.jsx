@@ -17,6 +17,18 @@ import {
   Alert,
 } from 'reactstrap';
 
+const ImagePreview = ({ defaultImage, selectedImage }) => {
+  return (
+    <div className={styles.imagePreview}>
+      <img
+        src={selectedImage || defaultImage}
+        alt="Profile Preview"
+        className={styles.previewImg}
+      />
+    </div>
+  );
+};
+
 const EditProfile = () => {
   const { authUser } = useAuth();
   const router = useRouter();
@@ -32,6 +44,7 @@ const EditProfile = () => {
   const [success, setSuccess] = useState(false);
   const [profileImage, setProfileImage] = useState(null);
   const [profileImageUrl, setProfileImageUrl] = useState(null);
+  const [defaultImage, setDefaultImage] = useState('https://firebasestorage.googleapis.com/v0/b/ogs-two.appspot.com/o/users%2Fdefault_profile_image.png?alt=media&token=3cfe1e0c-ccb7-46c8-81ec-307c48987878');
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -55,6 +68,17 @@ const EditProfile = () => {
       fetchUserData();
     }
   }, [authUser]);
+
+  useEffect(() => {
+    if (profileImage) {
+      const objectUrl = URL.createObjectURL(profileImage);
+      setProfileImageUrl(objectUrl);
+
+      return () => {
+        URL.revokeObjectURL(objectUrl);
+      };
+    }
+  }, [profileImage]);
 
   const handleInputChange = (event) => {
     setFormData({
@@ -124,10 +148,8 @@ const EditProfile = () => {
     }
   };
 
-
-
   if (!authUser) {
-    return <div>Loading...</div>;
+    return <div>Loading</div>;
   }
 
   return (
@@ -140,7 +162,27 @@ const EditProfile = () => {
       <div className={styles.container}>
         <Row>
           <Col>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} className={styles.form}>
+
+              {/* PROFILE PREVIEW */}
+              <FormGroup>
+                <ImagePreview
+                  defaultImage={defaultImage}
+                  selectedImage={profileImageUrl}
+                />
+                {/* <Label for="profileImage">Profile Image</Label> */}
+                <label htmlFor="profileImage" className={styles.customFileUpload}>
+                  Upload Image
+                </label>
+                <Input
+                  type="file"
+                  name="profileImage"
+                  id="profileImage"
+                  onChange={handleImageChange}
+                  className={styles.fileInput}
+                />
+              </FormGroup>
+
               <FormGroup>
                 <Input
                   type="text"
@@ -211,15 +253,6 @@ const EditProfile = () => {
                   placeholder='Facebook Url'
                 />
               </FormGroup>
-              <FormGroup>
-                <Label for="profileImage">Profile Image</Label>
-                <Input
-                  type="file"
-                  name="profileImage"
-                  id="profileImage"
-                  onChange={handleImageChange}
-                />
-              </FormGroup>
               <Button type="submit">Save Changes</Button>
               {success && (
                 <Alert color="success" className={styles.alert}>
@@ -232,7 +265,7 @@ const EditProfile = () => {
       </div>
     </div>
   );
-}
+};
 
 export default EditProfile;
 
