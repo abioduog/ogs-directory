@@ -28,14 +28,10 @@
 }
 
 .image {
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
-
-
-
-
 
 .imgCover {
   line-height: 0;
@@ -124,7 +120,7 @@
 
 .eventImageContainer {
   width: 100%;
-  height: 200px;
+  height: auto;
   border-radius: 2%;
   overflow: hidden;
   margin-right: 32px;
@@ -136,7 +132,7 @@
 .eventImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 

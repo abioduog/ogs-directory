@@ -146,18 +146,6 @@ const Profile = () => {
                 </div>
               ) : null}
 
-              {/* <div className={styles.imageCover}>
-                <span>
-                  <img src={event.imageUrl} alt="Image description"/>
-                </span>
-              </div>
-
-              <div className={styles.authorImage}>
-                <img src={event.imageUrl} alt="Author name" />
-                <span>Author Name</span>
-              </div>  */}
-
-
               <h3>{event.title}</h3>
               <p>Author: {event.author}</p>
               <p>Description: {event.description}</p>
