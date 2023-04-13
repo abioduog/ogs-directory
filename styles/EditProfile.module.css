@@ -95,5 +95,21 @@
   .fileInput {
     display: none;
   }
+
+
+  .memoryImagePreview {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-radius: 5%;
+  }
+  .memoryPreviewImg {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 5%;
+  }
   
   

@@ -15,7 +15,82 @@ import {
     Input,
     Button,
     Alert,
+    Carousel,
+    CarouselItem,
+    CarouselControl,
+    CarouselIndicators,
 } from 'reactstrap';
+
+const ImagePreview = ({ images }) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [animating, setAnimating] = useState(false);
+
+    const onExiting = () => {
+        setAnimating(true);
+    };
+
+    const onExited = () => {
+        setAnimating(false);
+    };
+
+    const next = () => {
+        if (animating) return;
+        const nextIndex = activeIndex === images.length - 1 ? 0 : activeIndex + 1;
+        setActiveIndex(nextIndex);
+    };
+
+    const previous = () => {
+        if (animating) return;
+        const nextIndex = activeIndex === 0 ? images.length - 1 : activeIndex - 1;
+        setActiveIndex(nextIndex);
+    };
+
+    const goToIndex = (newIndex) => {
+        if (animating) return;
+        setActiveIndex(newIndex);
+    };
+
+    const slides = images.map((image, index) => {
+        return (
+            <CarouselItem
+                onExiting={onExiting}
+                onExited={onExited}
+                key={index}
+            >
+                <img
+                    src={image}
+                    alt={`Image Preview ${index + 1}`}
+                    className={styles.memoryPreviewImg}
+                />
+            </CarouselItem>
+        );
+    });
+
+    return (
+        <Carousel
+        activeIndex={activeIndex}
+        next={next}
+        previous={previous} 
+    >
+        <CarouselIndicators
+            items={images}
+            activeIndex={activeIndex}
+            onClickHandler={goToIndex}
+        />
+        {slides}
+        <CarouselControl
+            direction="prev"
+            directionText="Previous"
+            onClickHandler={previous}
+        />
+        <CarouselControl
+            direction="next"
+            directionText="Next"
+            onClickHandler={next}
+        />
+    </Carousel>
+    );
+};
 
 const AddEvent = () => {
     const { authUser } = useAuth();
@@ -28,6 +103,7 @@ const AddEvent = () => {
     });
     const [success, setSuccess] = useState(false);
     const [eventImages, setEventImages] = useState([]);
+    const [eventImagePreviews, setEventImagePreviews] = useState([]);
 
     const handleInputChange = (event) => {
         setFormData({
@@ -39,6 +115,10 @@ const AddEvent = () => {
     const handleImageChange = (event) => {
         if (event.target.files.length > 0) {
             setEventImages(Array.from(event.target.files));
+            const imagePreviews = Array.from(event.target.files).map((file) =>
+                URL.createObjectURL(file)
+            );
+            setEventImagePreviews(imagePreviews);
         }
     };
 
@@ -46,9 +126,9 @@ const AddEvent = () => {
         return (
             formData.title.trim() !== '' &&
             formData.author.trim() !== '' &&
-            formData.description.trim() !== '' &&
-            formData.content.trim() !== ''
+            formData.description.trim() !== '' && formData.content.trim() !== ''
         );
+
     };
 
     const handleSubmit = async (event) => {
@@ -108,60 +188,74 @@ const AddEvent = () => {
                             </Col>
                         </Row>
                         <Form onSubmit={handleSubmit}>
+
                             <FormGroup>
-                                <Input
-                                    type="text"
-                                    name="title"
-                                    id="title"
-                                    value={formData.title}
-                                    onChange={handleInputChange}
-                                    placeholder='Enter Memory Title'
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Input
-                                    type="text"
-                                    name="author"
-                                    id="author"
-                                    value={formData.author}
-                                    onChange={handleInputChange}
-                                    placeholder='Enter Author Name'
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Input
-                                    type="text"
-                                    name="description"
-                                    id="description"
-                                    value={formData.description}
-                                    onChange={handleInputChange}
-                                    placeholder='Enter Memory Description'
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Input
-                                    type="textarea"
-                                    name="content"
-                                    id="content"
-                                    value={formData.content}
-                                    onChange={handleInputChange}
-                                    placeholder='Enter Content Here'
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="eventImages">Add Images (Optional)</Label>
+                                {/* <Label for="eventImages">Images</Label> */}
                                 <Input
                                     type="file"
                                     name="eventImages"
                                     id="eventImages"
-                                    onChange={handleImageChange}
+                                    accept="image/*"
                                     multiple
+                                    onChange={handleImageChange}
                                 />
                             </FormGroup>
-                            <Button type="submit" disabled={!isFormValid()}>Upload</Button>
+                            <ImagePreview images={eventImagePreviews}/>
+
+                            <FormGroup>
+                                <Label for="title">Title</Label>
+                                <Input
+                                    type="text"
+                                    name="title"
+                                    id="title"
+                                    placeholder="Event title"
+                                    value={formData.title}
+                                    onChange={handleInputChange}
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="author">Author</Label>
+                                <Input
+                                    type="text"
+                                    name="author"
+                                    id="author"
+                                    placeholder="Author name"
+                                    value={formData.author}
+                                    onChange={handleInputChange}
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="description">Description</Label>
+                                <Input
+                                    type="textarea"
+                                    name="description"
+                                    id="description"
+                                    placeholder="Event description"
+                                    value={formData.description}
+                                    onChange={handleInputChange}
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="content">Content</Label>
+                                <Input
+                                    type="textarea"
+                                    name="content"
+                                    id="content"
+                                    placeholder="Event content"
+                                    value={formData.content}
+                                    onChange={handleInputChange}
+                                />
+                            </FormGroup>
+                            <Button
+                                color="primary"
+                                type="submit"
+                                disabled={!isFormValid()}
+                            >
+                                Add Memory
+                            </Button>
                             {success && (
                                 <Alert color="success" className="mt-3">
-                                    Your event has been added successfully!
+                                    Memory added successfully!
                                 </Alert>
                             )}
                         </Form>
@@ -172,4 +266,4 @@ const AddEvent = () => {
     );
 };
 
-export default AddEvent;
+export default AddEvent;      
