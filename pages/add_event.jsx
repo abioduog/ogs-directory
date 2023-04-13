@@ -57,39 +57,44 @@ const ImagePreview = ({ images }) => {
                 onExited={onExited}
                 key={index}
             >
-                <img
-                    src={image}
-                    alt={`Image Preview ${index + 1}`}
-                    className={styles.memoryPreviewImg}
-                />
+                <div className={styles.memoryImagePreview}>
+                    <img
+                        src={image}
+                        alt={`Image Preview ${index + 1}`}
+                        className={styles.memoryPreviewImg}
+                    />
+                </div>
             </CarouselItem>
         );
     });
-
+    
     return (
-        <Carousel
-        activeIndex={activeIndex}
-        next={next}
-        previous={previous} 
-    >
-        <CarouselIndicators
-            items={images}
-            activeIndex={activeIndex}
-            onClickHandler={goToIndex}
-        />
-        {slides}
-        <CarouselControl
-            direction="prev"
-            directionText="Previous"
-            onClickHandler={previous}
-        />
-        <CarouselControl
-            direction="next"
-            directionText="Next"
-            onClickHandler={next}
-        />
-    </Carousel>
+        <div className="carouselContainer">
+            <Carousel
+                activeIndex={activeIndex}
+                next={next}
+                previous={previous}
+            >
+                <CarouselIndicators
+                    items={images}
+                    activeIndex={activeIndex}
+                    onClickHandler={goToIndex}
+                />
+                {slides}
+                <CarouselControl
+                    direction="prev"
+                    directionText="Previous"
+                    onClickHandler={previous}
+                />
+                <CarouselControl
+                    direction="next"
+                    directionText="Next"
+                    onClickHandler={next}
+                />
+            </Carousel>
+        </div>
     );
+
 };
 
 const AddEvent = () => {
@@ -180,6 +185,7 @@ const AddEvent = () => {
     return (
         <div className={styles.gridContainer}>
             <div className={styles.container}>
+                <ImagePreview images={eventImagePreviews} />
                 <Row>
                     <Col>
                         <Row>
@@ -188,9 +194,7 @@ const AddEvent = () => {
                             </Col>
                         </Row>
                         <Form onSubmit={handleSubmit}>
-
                             <FormGroup>
-                                {/* <Label for="eventImages">Images</Label> */}
                                 <Input
                                     type="file"
                                     name="eventImages"
@@ -200,8 +204,6 @@ const AddEvent = () => {
                                     onChange={handleImageChange}
                                 />
                             </FormGroup>
-                            <ImagePreview images={eventImagePreviews}/>
-
                             <FormGroup>
                                 <Label for="title">Title</Label>
                                 <Input
