@@ -19,7 +19,7 @@ const Members = () => {
   useEffect(() => {
     if (!loading && !authUser) {
       router.push('/');
-    } else if (!loading && authUser) {
+    } else if (!loading && authUser) { 
       setIsAuthenticating(false);
     }
   }, [authUser, loading]);

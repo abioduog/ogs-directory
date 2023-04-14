@@ -67,7 +67,7 @@ const ImagePreview = ({ images }) => {
             </CarouselItem>
         );
     });
-    
+
     return (
         <div className="carouselContainer">
             <Carousel
@@ -183,88 +183,92 @@ const AddEvent = () => {
     }
 
     return (
-        <div className={styles.gridContainer}>
-            <div className={styles.container}>
-                <ImagePreview images={eventImagePreviews} />
+        <div>
+            <div className={styles.gridContainer}>
                 <Row>
                     <Col>
-                        <Row>
-                            <Col>
-                                <h2>Add Memory</h2>
-                            </Col>
-                        </Row>
-                        <Form onSubmit={handleSubmit}>
-                            <FormGroup>
-                                <Input
-                                    type="file"
-                                    name="eventImages"
-                                    id="eventImages"
-                                    accept="image/*"
-                                    multiple
-                                    onChange={handleImageChange}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="title">Title</Label>
-                                <Input
-                                    type="text"
-                                    name="title"
-                                    id="title"
-                                    placeholder="Event title"
-                                    value={formData.title}
-                                    onChange={handleInputChange}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="author">Author</Label>
-                                <Input
-                                    type="text"
-                                    name="author"
-                                    id="author"
-                                    placeholder="Author name"
-                                    value={formData.author}
-                                    onChange={handleInputChange}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="description">Description</Label>
-                                <Input
-                                    type="textarea"
-                                    name="description"
-                                    id="description"
-                                    placeholder="Event description"
-                                    value={formData.description}
-                                    onChange={handleInputChange}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="content">Content</Label>
-                                <Input
-                                    type="textarea"
-                                    name="content"
-                                    id="content"
-                                    placeholder="Event content"
-                                    value={formData.content}
-                                    onChange={handleInputChange}
-                                />
-                            </FormGroup>
-                            <Button
-                                color="primary"
-                                type="submit"
-                                disabled={!isFormValid()}
-                            >
-                                Add Memory
-                            </Button>
-                            {success && (
-                                <Alert color="success" className="mt-3">
-                                    Memory added successfully!
-                                </Alert>
-                            )}
-                        </Form>
+                        <h2>Add Memory</h2>
                     </Col>
                 </Row>
+                {/* <ImagePreview images={eventImagePreviews} /> */}
+                <div className={styles.container}>
+                <ImagePreview images={eventImagePreviews} />
+                    <Row>
+                        <Col>
+                            <Form onSubmit={handleSubmit}>
+                                <FormGroup>
+                                    <Input
+                                        type="file"
+                                        name="eventImages"
+                                        id="eventImages"
+                                        accept="image/*"
+                                        multiple
+                                        onChange={handleImageChange}
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="title">Title</Label>
+                                    <Input
+                                        type="text"
+                                        name="title"
+                                        id="title"
+                                        placeholder="Event title"
+                                        value={formData.title}
+                                        onChange={handleInputChange}
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="author">Author</Label>
+                                    <Input
+                                        type="text"
+                                        name="author"
+                                        id="author"
+                                        placeholder="Author name"
+                                        value={formData.author}
+                                        onChange={handleInputChange}
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="description">Description</Label>
+                                    <Input
+                                        type="textarea"
+                                        name="description"
+                                        id="description"
+                                        placeholder="Event description"
+                                        value={formData.description}
+                                        onChange={handleInputChange}
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="content">Content</Label>
+                                    <Input
+                                        type="textarea"
+                                        name="content"
+                                        id="content"
+                                        placeholder="Event content"
+                                        value={formData.content}
+                                        onChange={handleInputChange}
+                                    />
+                                </FormGroup>
+                                <Button
+                                    color="primary"
+                                    type="submit"
+                                    disabled={!isFormValid()}
+                                >
+                                    Add Memory
+                                </Button>
+                                {success && (
+                                    <Alert color="success" className="mt-3">
+                                        Memory added successfully!
+                                    </Alert>
+                                )}
+                            </Form>
+                        </Col>
+                    </Row>
+                </div>
             </div>
         </div>
+
     );
 };
 
