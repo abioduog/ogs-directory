@@ -5,6 +5,7 @@ import { db, storage } from '../lib/firebase';
 import styles from '../styles/EditProfile.module.css';
 import globalStyles from '../styles/global.module.css';
 import { useRouter } from 'next/router';
+import Head from 'next/head'
 import {
     Container,
     Row,
@@ -70,6 +71,9 @@ const ImagePreview = ({ images }) => {
 
     return (
         <div className="carouselContainer">
+            <Head>
+                <title>OGS 88 Portal</title>
+            </Head>
             <Carousel
                 activeIndex={activeIndex}
                 next={next}

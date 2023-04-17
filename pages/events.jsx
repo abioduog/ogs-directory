@@ -9,6 +9,7 @@ import Navbar from '../components/Navbar';
 import eventCardStyles from '../styles/Events.module.css';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Head from 'next/head'
 
 const Events = () => {
     const { authUser, loading, signOut } = useAuth();
@@ -39,6 +40,9 @@ const Events = () => {
 
     return (
         <div>
+            <Head>
+                <title>OGS 88 Portal</title>
+            </Head>
             <Navbar />
             <div className={styles.body}>
                 {loading ? (

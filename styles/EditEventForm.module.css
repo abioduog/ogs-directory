@@ -1,0 +1,78 @@
+/* styles/EditEventForm.module.css */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    height: auto;
+    color: black;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    margin: auto;
+    /* z-index: 999; */
+}
+
+.label {
+    width: 100%;
+    font-weight: bold;
+    margin-top: .5rem;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.3rem;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.saveButton,
+.cancelButton {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.saveButton {
+    background-color: #4caf50;
+}
+
+.saveButton:hover {
+    background-color: #3e8e41;
+}
+
+.cancelButton {
+    background-color: #f44336;
+}
+
+.cancelButton:hover {
+    background-color: #d32f2f;
+}
+
+@media (max-width: 767px) {
+    .form {
+        padding: 16px;
+    }
+}

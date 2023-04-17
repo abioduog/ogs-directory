@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Head from 'next/head'
+
 
 import { useAuth } from '../context/AuthUserContext';
 
@@ -35,6 +37,9 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>OGS 88 Portal</title>
+      </Head>
       <Container className="text-center" style={{ padding: '40px 0px' }}>
         <Row>
           <Col>

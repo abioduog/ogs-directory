@@ -7,6 +7,7 @@ import { Row, Col } from 'reactstrap';
 import UsersProfile from '../components/Users';
 import styles from '.././styles/global.module.css';
 import Navbar from '../components/Navbar';
+import Head from 'next/head'
 
 const Members = () => {
   const { authUser, loading, signOut } = useAuth();
@@ -26,6 +27,9 @@ const Members = () => {
 
   return (
     <div>
+      <Head>
+        <title>OGS 88 Portal</title>
+      </Head>
       <Navbar />
       <div className={styles.body}>
         {isAuthenticating ? (

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import styles from '../styles/AddProfile.module.css';
+import Head from 'next/head'
 
 const AddProfile = () => {
   const [formData, setFormData] = useState({
@@ -43,6 +44,9 @@ const AddProfile = () => {
 
   return (
     <form className={styles.addProfile} onSubmit={handleSubmit}>
+      <Head>
+        <title>OGS 88 Portal</title>
+      </Head>
       <h1 className={styles.title}>Add Profile</h1>
       <label className={styles.label}>
         First Name

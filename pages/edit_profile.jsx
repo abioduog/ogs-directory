@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthUserContext';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db, storage } from '../lib/firebase';
 import styles from '../styles/EditProfile.module.css';
+import Head from 'next/head'
 
 import {
   Container,
@@ -19,7 +20,11 @@ import {
 
 const ImagePreview = ({ defaultImage, selectedImage }) => {
   return (
+    
     <div className={styles.imagePreview}>
+      <Head>
+        <title>OGS 88 Portal</title>
+      </Head>
       <img
         src={selectedImage || defaultImage}
         alt="Profile Preview"
