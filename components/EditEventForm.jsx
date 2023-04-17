@@ -39,9 +39,6 @@ const EditEventForm = ({ event, closeForm, updateEvent }) => {
 
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
-            <Head>
-                <title>OGS 88 Portal</title>
-            </Head>
             <label htmlFor="title" className={styles.label}>Title</label>
             <input
                 type="text"
