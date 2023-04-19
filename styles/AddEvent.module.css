@@ -1,45 +1,61 @@
-.container {
+.body {
+    width: 100%;
+    height: auto;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: auto;
+}
+
+.container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 100%;
+    max-width: 400px;
     height: auto;
+    color: black;
+    background-color: #f2f2f2;
     padding: 40px;
-    margin-left: 5%;
-    margin-right: 5%;
+    border-radius: 5px;
 }
 
+
 .gridContainer {
-    width: 100%;
-  }
-  
-  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    max-width: 600px;
+    /* margin: auto; */
     background-color: #f2f2f2;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .input {
+.input {
     width: 100%;
     margin-bottom: 1em;
-  }
-  
-  .alert {
-    margin-top: 16px;
-  }
-  
-  @media (max-width: 767px) {
-    .form {
-      /* max-width: 100%; */
-      padding: 16px;
-    }
-  }
+}
 
-  .imagePreview {
+.alert {
+    margin-top: 16px;
+}
+
+@media (max-width: 767px) {
+    .form {
+        /* max-width: 100%; */
+        padding: 16px;
+    }
+}
+
+.imagePreview {
     width: 150px;
     height: 150px;
     border: 1px solid #ccc;
@@ -49,15 +65,16 @@
     margin-bottom: 1rem;
     border-radius: 50%;
     object-fit: contain;
-  }
-  .previewImg {
+}
+
+.previewImg {
     max-width: 100%;
     max-height: 100%;
     border-radius: 50%;
     object-fit: contain;
-  }
-  
-  .customFileUpload {
+}
+
+.customFileUpload {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,20 +93,20 @@
     -ms-user-select: none;
     user-select: none;
     transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-  }
-  
-  .customFileUpload:hover {
+}
+
+.customFileUpload:hover {
     background-color: #5e5e5e;
-  }
+}
 
-  .fileInput {
+.fileInput {
     display: none;
-  }
+}
 
 
-  /* ADD EVENT */
+/* ADD EVENT */
 
-  .memoryImagePreview {
+.memoryImagePreview {
     width: 100%;
     height: 130px;
     display: flex;
@@ -109,10 +126,10 @@
 }
 
 .carouselContainer {
-  overflow: hidden;
-  height: 130px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    overflow: hidden;
+    height: 130px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

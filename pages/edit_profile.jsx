@@ -39,12 +39,19 @@ const EditProfile = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
     firstname: '',
+    middlename: '',
     lastname: '',
     occupation: '',
     email: '',
     website: '',
     linkedIn: '',
     facebook: '',
+    currentLocationState: '',
+    currentLocationCountry: '',
+    oneSentenceDescription: '',
+    nickname: '',
+    careerAspiration: '',
+    advice: ''
   });
   const [success, setSuccess] = useState(false);
   const [profileImage, setProfileImage] = useState(null);
@@ -106,13 +113,21 @@ const EditProfile = () => {
       const userRef = doc(db, 'usersProfile', authUser.uid);
       const updatedData = {
         firstname: formData.firstname,
+        middlename: formData.middlename,
         lastname: formData.lastname,
         occupation: formData.occupation,
         email: formData.email,
         website: formData.website,
         linkedIn: formData.linkedIn,
-        facebook: formData.facebook
+        facebook: formData.facebook,
+        currentLocationState: formData.currentLocationState,
+        currentLocationCountry: formData.currentLocationCountry,
+        oneSentenceDescription: formData.oneSentenceDescription,
+        nickname: formData.nickname,
+        careerAspiration: formData.careerAspiration,
+        advice: formData.advice
       };
+      
 
       // Filter out empty or null values
       const filteredData = Object.fromEntries(
@@ -158,16 +173,16 @@ const EditProfile = () => {
   }
 
   return (
-    <div className={styles.gridContainer}>
-      <Row>
-        <Col>
-          <h2>Edit Profile</h2>
-        </Col>
-      </Row>
-      <div className={styles.container}>
+    <div className={styles.container}>
+      <div>
+
+      </div>
+
+      <div className={styles.gridContainer}>
         <Row>
           <Col>
             <Form onSubmit={handleSubmit} className={styles.form}>
+            <h2>Edit Profile</h2>
 
               {/* PROFILE PREVIEW */}
               <FormGroup>
@@ -187,8 +202,8 @@ const EditProfile = () => {
                   className={styles.fileInput}
                 />
               </FormGroup>
-
-              <FormGroup>
+                
+                {/* TEXT INPUT SECTION */}
                 <Input
                   type="text"
                   name="firstname"
@@ -196,9 +211,20 @@ const EditProfile = () => {
                   value={formData.firstname}
                   onChange={handleInputChange}
                   placeholder='First Name'
+                  className={styles.input}
                 />
-              </FormGroup>
-              <FormGroup>
+
+                <Input
+                  type="text"
+                  name="middlename"
+                  id="middlename"
+                  value={formData.middlename}
+                  onChange={handleInputChange}
+                  placeholder='Middle Name'
+                  className={styles.input}
+                />
+
+
                 <Input
                   type="text"
                   name="lastname"
@@ -206,9 +232,19 @@ const EditProfile = () => {
                   value={formData.lastname}
                   onChange={handleInputChange}
                   placeholder='Last Name'
+                  className={styles.input}
                 />
-              </FormGroup>
-              <FormGroup>
+
+                <Input
+                  type="text"
+                  name="nickname"
+                  id="nickname"
+                  value={formData.nickname}
+                  onChange={handleInputChange}
+                  placeholder='Nickname at school'
+                  className={styles.input}
+                />
+
                 <Input
                   type="text"
                   name="occupation"
@@ -216,9 +252,9 @@ const EditProfile = () => {
                   value={formData.occupation}
                   onChange={handleInputChange}
                   placeholder='Occupation'
+                  className={styles.input}
                 />
-              </FormGroup>
-              <FormGroup>
+
                 <Input
                   type="email"
                   name="email"
@@ -226,9 +262,9 @@ const EditProfile = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder='Email'
+                  className={styles.input}
                 />
-              </FormGroup>
-              <FormGroup>
+
                 <Input
                   type="text"
                   name="website"
@@ -236,9 +272,9 @@ const EditProfile = () => {
                   value={formData.website}
                   onChange={handleInputChange}
                   placeholder='Website'
+                  className={styles.input}
                 />
-              </FormGroup>
-              <FormGroup>
+
                 <Input
                   type="text"
                   name="linkedIn"
@@ -246,9 +282,9 @@ const EditProfile = () => {
                   value={formData.linkedIn}
                   onChange={handleInputChange}
                   placeholder='LinkedIn Url'
+                  className={styles.input}
                 />
-              </FormGroup>
-              <FormGroup>
+
                 <Input
                   type="text"
                   name="facebook"
@@ -256,8 +292,59 @@ const EditProfile = () => {
                   value={formData.facebook}
                   onChange={handleInputChange}
                   placeholder='Facebook Url'
+                  className={styles.input}
                 />
-              </FormGroup>
+
+                <Input
+                  type="text"
+                  name="currentLocationState"
+                  id="currentLocationState"
+                  value={formData.currentLocationState}
+                  onChange={handleInputChange}
+                  placeholder='Current Location (State)'
+                  className={styles.input}
+                />
+
+                <Input
+                  type="text"
+                  name="currentLocationCountry"
+                  id="currentLocationCountry"
+                  value={formData.currentLocationCountry}
+                  onChange={handleInputChange}
+                  placeholder='Current Location (Country)'
+                  className={styles.input}
+                />
+
+                <Input
+                  type="text"
+                  name="oneSentenceDescription"
+                  id="oneSentenceDescription"
+                  value={formData.oneSentenceDescription}
+                  onChange={handleInputChange}
+                  placeholder='Describe yourself in one sentence'
+                  className={styles.input}
+                />
+
+                <Input
+                  type="text"
+                  name="careerAspiration"
+                  id="careerAspiration"
+                  value={formData.careerAspiration}
+                  onChange={handleInputChange}
+                  placeholder='Career aspiration for the next 5 years'
+                  className={styles.input}
+                />
+
+                <Input
+                  type="text"
+                  name="advice"
+                  id="advice"
+                  value={formData.advice}
+                  onChange={handleInputChange}
+                  placeholder='Word of advice to your classmates'
+                  className={styles.input}
+                />
+
               <Button type="submit">Save Changes</Button>
               {success && (
                 <Alert color="success" className={styles.alert}>
@@ -268,6 +355,12 @@ const EditProfile = () => {
           </Col>
         </Row>
       </div>
+
+      <div>
+        
+      </div>
+
+
     </div>
   );
 };

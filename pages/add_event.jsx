@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthUserContext';
 import { doc, addDoc, collection, updateDoc } from 'firebase/firestore';
 import { db, storage } from '../lib/firebase';
-import styles from '../styles/EditProfile.module.css';
+import styles from '../styles/AddEvent.module.css';
 import globalStyles from '../styles/global.module.css';
 import { useRouter } from 'next/router';
 import Head from 'next/head'
@@ -183,19 +183,14 @@ const AddEvent = () => {
     };
 
     if (!authUser) {
-        return <div className={globalStyles}>Loading...</div>;
+        return <div className={globalStyles.loader}>Loading</div>;
     }
 
     return (
         <div>
             <div className={styles.gridContainer}>
-                <Row>
-                    <Col>
-                        <h2>Add Memory</h2>
-                    </Col>
-                </Row>
-                {/* <ImagePreview images={eventImagePreviews} /> */}
                 <div className={styles.container}>
+                <h2>Add Memory</h2>
                 <ImagePreview images={eventImagePreviews} />
                     <Row>
                         <Col>
