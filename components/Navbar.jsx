@@ -28,8 +28,10 @@ const Navbar = () => {
             <ReactstrapNavbar className={styles.navbar} dark expand="md" style={{ backgroundColor: 'black' }}>
                 <Link href="/members">
                     <a className={styles.link}>
+                    <span className={styles.fullLogo}>
                         <img className={styles.imgLogo} src="https://firebasestorage.googleapis.com/v0/b/ogs-two.appspot.com/o/logos%2F8def7e5e-9211-4961-b3ca-d7ce1152e33c.jpg?alt=media&token=471faa86-963d-4bf0-86f7-b4f7858f25ca" alt="" />
                         <NavbarBrand className={styles.whiteText}>OGS 88 Portal</NavbarBrand>
+                    </span>
                     </a>
                 </Link>
                 <NavbarToggler onClick={toggle} />

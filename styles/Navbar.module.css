@@ -26,6 +26,11 @@
     color: inherit;
     position: relative;
   }
+
+  .fullLogo {
+    display: flex;
+    align-items: center;
+  }
   
   .logo {
     font-size: 24px;

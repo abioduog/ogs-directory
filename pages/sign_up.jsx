@@ -6,22 +6,18 @@ import { db } from '../lib/firebase';
 
 import { Container, Row, Col, Button, Form, FormGroup, Input, Alert } from 'reactstrap';
 
-import styles from '../styles/Signup.module.css';
-
 const SignUp = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [occupation, setOccupation] = useState("");
   const [website, setWebsite] = useState("");
-
   const [facebook, setFacebook] = useState("");
   const [linkedIn, setLinkedin] = useState("");
-
-
   const [email, setEmail] = useState("");
   const [passwordOne, setPasswordOne] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
   const router = useRouter();
+
   // Optional error handling
   const [error, setError] = useState(null);
 
@@ -56,18 +52,18 @@ const SignUp = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <Container className="text-center" style={{ padding: '10px, 0px', justifyContent: 'center' }}>
-        <Row>
+    <div className="bg-gray-100 min-h-screen flex flex-col justify-center items-center">
+      <div className="text-center py-10">
+        <Row className="justify-center">
           <Col>
-            <h2>Sign Up</h2>
+            <h2 className="text-xl font-bold uppercase">Sign Up</h2>
           </Col>
         </Row>
-        <Row>
+        <div className="justify-center">
           <Col>
-            <Form className={styles.form} onSubmit={onSubmit}>
+            <Form className="bg-white p-5 shadow flex flex-col justify-center items-center" onSubmit={onSubmit}>
               {error && <Alert color="danger">{error}</Alert>}
-              <FormGroup row>
+              <FormGroup row className="mb-4">
                 <Col sm={20}>
                   <Input
                     type="text"
@@ -75,10 +71,12 @@ const SignUp = () => {
                     onChange={(event) => setFirstname(event.target.value)}
                     name="firstname"
                     id="signUpFirstName"
-                    placeholder="First Name" />
+                    placeholder="First Name"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                  />
                 </Col>
               </FormGroup>
-              <FormGroup row>
+              <FormGroup row className="mb-4">
                 <Col sm={20}>
                   <Input
                     type="text"
@@ -86,10 +84,12 @@ const SignUp = () => {
                     onChange={(event) => setLastname(event.target.value)}
                     name="lastname"
                     id="signUpLastName"
-                    placeholder="Last Name" />
+                    placeholder="Last Name"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                  />
                 </Col>
               </FormGroup>
-              <FormGroup row>
+              <FormGroup row className="mb-4">
                 <Col sm={20}>
                   <Input
                     type="text"
@@ -97,10 +97,12 @@ const SignUp = () => {
                     onChange={(event) => setOccupation(event.target.value)}
                     name="occupation"
                     id="signUpOccupation"
-                    placeholder="Occupation" />
+                    placeholder="Occupation"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                  />
                 </Col>
               </FormGroup>
-              <FormGroup row>
+              <FormGroup row className="mb-4">
                 <Col sm={20}>
                   <Input
                     type="text"
@@ -108,10 +110,12 @@ const SignUp = () => {
                     onChange={(event) => setWebsite(event.target.value)}
                     name="website"
                     id="signUpWebsite"
-                    placeholder="Website" />
+                    placeholder="Website"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                  />
                 </Col>
               </FormGroup>
-              <FormGroup row>
+              <FormGroup row className="mb-4">
                 <Col sm={20}>
                   <Input
                     type="email"
@@ -119,66 +123,79 @@ const SignUp = () => {
                     onChange={(event) => setEmail(event.target.value)}
                     name="email"
                     id="signUpEmail"
-                    placeholder="Email" />
+                    placeholder="Email"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                  />
                 </Col>
               </FormGroup>
-
-              <FormGroup row>
-              <Col sm={20}>
-                <Input
-                  type="text"
-                  value={facebook}
-                  onChange={(event) => setFacebook(event.target.value)}
-                  name="facebook"
-                  id="signUpFacebook"
-                  placeholder="Facebook URL" />
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Col sm={20}>
-                <Input
-                  type="text"
-                  value={linkedIn}
-                  onChange={(event) => setLinkedin(event.target.value)}
-                  name="linkedIn"
-                  id="signUpLinkedIn"
-                  placeholder="LinkedIn URL" />
-              </Col>
-            </FormGroup>
-
-
-              <FormGroup row>
+              <FormGroup row className="mb-4">
                 <Col sm={20}>
                   <Input
-                    type="password"
-                    name="passwordOne"
-                    value={passwordOne}
-                    onChange={(event) => setPasswordOne(event.target.value)}
-                    id="signUpPassword"
-                    placeholder="Password" />
+                    type="text"
+                    value={facebook}
+                    onChange={(event) => setFacebook(event.target.value)}
+                    name="facebook"
+                    id="signUpFacebook"
+                    placeholder="Facebook URL"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                  />
                 </Col>
               </FormGroup>
-              <FormGroup row>
+              <FormGroup row className="mb-4">
                 <Col sm={20}>
                   <Input
-                    type="password"
-                    name="password"
-                    value={passwordTwo}
-                    onChange={(event) => setPasswordTwo(event.target.value)}
-                    id="signUpPassword2"
-                    placeholder="Confirm Password" />
-                </Col>
-              </FormGroup>
-              <FormGroup row>
-                <Col>
-                  <Button>Sign Up</Button>
-                </Col>
-              </FormGroup>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+                    type="text"
+                    value={linkedIn}
+                    onChange={(event) => setLinkedin(event.target.value)}
+                    name="linkedIn"
+                    id="signUpLinkedIn"
+                    placeholder="LinkedIn URL"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md"/>
+                    </Col>
+                  </FormGroup>
+                  <FormGroup row className="mb-4">
+                    <Col sm={20}>
+                      <Input
+                        type="password"
+                        name="passwordOne"
+                        value={passwordOne}
+                        onChange={(event) => setPasswordOne(event.target.value)}
+                        id="signUpPassword"
+                        placeholder="Password"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                      />
+                    </Col>
+                  </FormGroup>
+                  <FormGroup row className="mb-4">
+                    <Col sm={20}>
+                      <Input
+                        type="password"
+                        name="password"
+                        value={passwordTwo}
+                        onChange={(event) => setPasswordTwo(event.target.value)}
+                        id="signUpPassword2"
+                        placeholder="Confirm Password"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                      />
+                    </Col>
+                  </FormGroup>
+                  <FormGroup row>
+                    <Col>
+                      <Button
+                        type="submit"
+                        className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                      >
+                        Sign Up
+                      </Button>
+                    </Col>
+                  </FormGroup>
+                </Form>
+              </Col>
+            </div>
+          </div>
+        </div>
+        
+
   )
 }
 
