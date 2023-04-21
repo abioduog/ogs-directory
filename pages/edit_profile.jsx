@@ -199,7 +199,7 @@ const EditProfile = () => {
       >
         <h2>Profile Updated</h2>
         <p>Your profile has been updated successfully!</p>
-        <Button onClick={closeModal}>Close</Button>
+        <Button onClick={closeModal} className="bg-black text-white px-4 py-2 rounded-md">Close</Button>
       </ReactModal>
       <div>
 
@@ -372,7 +372,7 @@ const EditProfile = () => {
                   className={styles.input}
                 />
 
-              <Button type="submit">Save Changes</Button>
+              <Button type="submit" className="bg-black text-white px-4 py-2 rounded-md">Save Changes</Button>
               {success && (
                 <Alert color="success" className={styles.alert}>
                   Your profile has been updated successfully!
