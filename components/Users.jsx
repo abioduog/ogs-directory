@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import UserProfileCard from './UserProfileCard';
 import SearchBar from './SearchBar';
-import styles from '.././styles/VerticalCard.module.css';
+import styles from '.././styles/UserProfileCard.module.css';
 import { db, storage } from '../lib/firebase';
 
 const UsersProfile = () => {

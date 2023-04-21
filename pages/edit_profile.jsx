@@ -4,7 +4,8 @@ import { useAuth } from '../context/AuthUserContext';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db, storage } from '../lib/firebase';
 import styles from '../styles/EditProfile.module.css';
-import Head from 'next/head'
+import Head from 'next/head';
+import ReactModal from 'react-modal';
 
 import {
   Container,
@@ -12,7 +13,6 @@ import {
   Col,
   Form,
   FormGroup,
-  Label,
   Input,
   Button,
   Alert,
@@ -57,7 +57,8 @@ const EditProfile = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [profileImageUrl, setProfileImageUrl] = useState(null);
   const [defaultImage, setDefaultImage] = useState('https://firebasestorage.googleapis.com/v0/b/ogs-two.appspot.com/o/users%2Fdefault_profile_image.png?alt=media&token=3cfe1e0c-ccb7-46c8-81ec-307c48987878');
-
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -91,6 +92,12 @@ const EditProfile = () => {
       };
     }
   }, [profileImage]);
+
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    router.push('/profile');
+  };
 
   const handleInputChange = (event) => {
     setFormData({
@@ -159,10 +166,15 @@ const EditProfile = () => {
       }
 
       // Show success message and redirect to profile page
+      // setSuccess(true);
+
+      // Show success message and open the modal
       setSuccess(true);
-      setTimeout(() => {
-        router.push('/profile');
-      }, 2000);
+      setModalIsOpen(true);
+
+      // setTimeout(() => {
+      //   router.push('/profile');
+      // }, 2000);
     } catch (error) {
       console.error(error);
     }
@@ -174,6 +186,21 @@ const EditProfile = () => {
 
   return (
     <div className={styles.container}>
+
+      {/* Add this line to set the app element for the modal */}
+      {ReactModal.setAppElement('#__next')}
+
+      <ReactModal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Profile Updated Modal"
+        className={styles.modal}
+        overlayClassName={styles.modalOverlay}
+      >
+        <h2>Profile Updated</h2>
+        <p>Your profile has been updated successfully!</p>
+        <Button onClick={closeModal}>Close</Button>
+      </ReactModal>
       <div>
 
       </div>

@@ -192,10 +192,10 @@ const Profile = () => {
               <p>Author: {event.author}</p>
               <p>Description: {event.description}</p>
               <p>Content: {event.content}</p>
-              <button className={styles.deleteButton} onClick={() => deleteEvent(event.id, event.imageUrls)}>
+              <button class="bg-black hover:bg-grey text-white py-2 px-4 rounded mr-3" onClick={() => deleteEvent(event.id, event.imageUrls)}>
                 Delete
               </button>
-              <button className={styles.editButton} onClick={() => openEditModal(event)}>
+              <button class="bg-black hover:bg-grey text-white py-2 px-4 rounded" onClick={() => openEditModal(event)}>
                 Edit
               </button>
             </div>

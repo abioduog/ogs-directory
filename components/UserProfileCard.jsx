@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { FaLinkedin, FaFacebook } from 'react-icons/fa';
-import cardstyles from '../styles/VerticalCard.module.css';
+import cardstyles from '../styles/UserProfileCard.module.css';
 
 const UserProfileCard = ({ firstname, lastname, id, occupation, linkedIn, facebook, email, imgUrl }) => {
 	let fullName = firstname + ' ' + lastname;
