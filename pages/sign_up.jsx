@@ -183,7 +183,7 @@ const SignUp = () => {
                     <Col>
                       <Button
                         type="submit"
-                        className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                        className="bg-black text-white px-4 py-2 rounded-md"
                       >
                         Sign Up
                       </Button>

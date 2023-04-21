@@ -78,7 +78,7 @@ export default function Login() {
               </FormGroup>
               <FormGroup row>
                 <Col>
-                  <Button className="w-full px-4 py-2 mb-4 bg-blue-500 text-white rounded-md" onClick={onSubmit}>
+                  <Button className="w-full px-4 py-2 mb-4 bg-black text-white rounded-md" onClick={onSubmit}>
                     Login
                   </Button>
                 </Col>
