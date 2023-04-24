@@ -47,7 +47,7 @@ const Events = () => {
             <div className={styles.body}>
                 {loading ? (
                     <Row>
-                        <Col>Loading....</Col>
+                        <Col>Loading</Col>
                     </Row>
                 ) : (
                     <>
@@ -62,36 +62,6 @@ const Events = () => {
                                         <p className={eventCardStyles.content}>Content: {event.content}</p>
                                     </div>
                                 ))}
-
-                                {/* {events.map((event) => (
-                                    <div key={event.id} className={eventCardStyles.card} onClick={console.log(event.title)}>
-                                        {Array.isArray(event.imageUrls) ? (
-                                            <div className={styles.eventImageContainer}>
-                                                <Carousel
-                                                    showArrows
-                                                    showStatus={false}
-                                                    showThumbs={false}
-                                                    verticalSwipe='standard'
-                                                    emulateTouch
-                                                >
-                                                    {event.imageUrls.map((imageUrl, index) => (
-                                                        <div key={index}>
-                                                            <img src={imageUrl} alt={`${event.title} ${index + 1}`} className={eventCardStyles.eventImage} />
-                                                        </div>
-                                                    ))}
-                                                </Carousel>
-                                            </div>
-                                        ) : event.imageUrl ? (
-                                            <div className={styles.eventImageContainer}>
-                                                <img src={event.imageUrl} alt={event.title} className={eventCardStyles.eventImage} />
-                                            </div>
-                                        ) : null}
-                                        <h3>{event.title}</h3>
-                                        <p>Author: {event.author}</p>
-                                        <p>Description: {event.description}</p>
-                                        <p>Content: {event.content}</p>
-                                    </div>
-                                ))} */}
                             </ul>
                         </div>
                     </>

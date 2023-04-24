@@ -20,7 +20,6 @@ const SignUp = () => {
 
   // Optional error handling
   const [error, setError] = useState(null);
-
   const { createUserWithEmailAndPassword } = useAuth();
 
   const onSubmit = event => {
