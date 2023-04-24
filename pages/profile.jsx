@@ -120,6 +120,21 @@ const Profile = () => {
     return <div className={globalStyles.loader}>Loading</div>;
   }
 
+  const createShareableLink = (eventId) => {
+    return `${window.location.origin}/sharevent/${eventId}`;
+  };
+
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(
+      () => {
+        console.log("Text copied to clipboard:", text);
+      },
+      (err) => {
+        console.error("Could not copy text to clipboard:", err);
+      }
+    );
+  };
+
   const { firstname, lastname, occupation, website, facebook, linkedIn, email, phoneNumber } = userData;
   const fullname = `${firstname} ${lastname}`;
 
@@ -192,15 +207,20 @@ const Profile = () => {
               <p>Author: {event.author}</p>
               <p>Description: {event.description}</p>
               <p>Content: {event.content}</p>
-              <button class="bg-black hover:bg-grey text-white py-2 px-4 rounded mr-3" onClick={() => deleteEvent(event.id, event.imageUrls)}>
+              <button class="bg-black hover:bg-gray-500 text-white py-2 px-4 rounded mr-3" onClick={() => deleteEvent(event.id, event.imageUrls)}>
                 Delete
               </button>
-              <button class="bg-black hover:bg-grey text-white py-2 px-4 rounded" onClick={() => openEditModal(event)}>
+              <button class="bg-black hover:bg-gray-500 text-white py-2 px-4 rounded" onClick={() => openEditModal(event)}>
                 Edit
               </button>
+
+              <button className="bg-black hover:bg-gray-500 text-white py-2 px-4 rounded ml-3" onClick={() => copyToClipboard(createShareableLink(event.id))}>
+              Share
+            </button>
             </div>
           ))}
         </div>
+
       </div>
 
       <Modal

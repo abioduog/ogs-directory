@@ -10,9 +10,9 @@ import {
     Nav,
     NavItem,
     NavLink,
-    Button,
 } from 'reactstrap';
 import styles from '../styles/Navbar.module.css';
+import globalStyles from '../styles/global.module.css';
 
 const ProfileNavbar = () => {
     const router = useRouter();
@@ -67,7 +67,9 @@ const ProfileNavbar = () => {
                         </NavItem>
                         <NavItem>
                             <NavLink className={styles.link}>
-                                <Button onClick={signOutButton} className={styles.whiteButton}>Sign out</Button>
+                                <button onClick={signOutButton} className={globalStyles.button}>
+                                    Sign out
+                                </button>
                             </NavLink>
                         </NavItem>
                     </Nav>

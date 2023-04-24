@@ -57,9 +57,6 @@
 
 
 
-
-
-
 .textContainer {
   display: flex;
   flex-direction: column;
@@ -116,11 +113,12 @@
   margin-bottom: 10px;
   border-radius: 5px;
   width: 100%;
+  box-shadow: #010101;
 }
 
 .eventImageContainer {
   width: 100%;
-  height: auto;
+  height: 300px;
   border-radius: 2%;
   overflow: hidden;
   margin-right: 32px;

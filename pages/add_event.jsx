@@ -187,14 +187,14 @@ const AddEvent = () => {
     }
 
     return (
-        <div>
-            <div className={styles.gridContainer}>
-                <div className={styles.container}>
+        <div className={styles.body}>
+            <div className={styles.container}>
+                <div className={styles.gridContainer}>
                 <h2>Add Memory</h2>
                 <ImagePreview images={eventImagePreviews} />
                     <Row>
                         <Col>
-                            <Form onSubmit={handleSubmit}>
+                            <Form onSubmit={handleSubmit} className={styles.form}>
                                 <FormGroup>
                                     <Input
                                         type="file"
