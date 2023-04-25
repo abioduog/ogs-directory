@@ -192,9 +192,7 @@ const SignUp = () => {
               </Col>
             </div>
           </div>
-        </div>
-        
-
+    </div>
   )
 }
 

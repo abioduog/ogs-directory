@@ -187,83 +187,168 @@ const AddEvent = () => {
     }
 
     return (
-        <div className={styles.body}>
-            <div className={styles.container}>
-                <div className={styles.gridContainer}>
-                <h2>Add Memory</h2>
-                <ImagePreview images={eventImagePreviews} />
-                    <Row>
-                        <Col>
-                            <Form onSubmit={handleSubmit} className={styles.form}>
-                                <FormGroup>
-                                    <Input
-                                        type="file"
-                                        name="eventImages"
-                                        id="eventImages"
-                                        accept="image/*"
-                                        multiple
-                                        onChange={handleImageChange}
-                                    />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for="title">Title</Label>
-                                    <Input
-                                        type="text"
-                                        name="title"
-                                        id="title"
-                                        placeholder="Event title"
-                                        value={formData.title}
-                                        onChange={handleInputChange}
-                                    />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for="author">Author</Label>
-                                    <Input
-                                        type="text"
-                                        name="author"
-                                        id="author"
-                                        placeholder="Author name"
-                                        value={formData.author}
-                                        onChange={handleInputChange}
-                                    />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for="description">Description</Label>
-                                    <Input
-                                        type="textarea"
-                                        name="description"
-                                        id="description"
-                                        placeholder="Event description"
-                                        value={formData.description}
-                                        onChange={handleInputChange}
-                                    />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for="content">Content</Label>
-                                    <Input
-                                        type="textarea"
-                                        name="content"
-                                        id="content"
-                                        placeholder="Event content"
-                                        value={formData.content}
-                                        onChange={handleInputChange}
-                                    />
-                                </FormGroup>
-                                <Button
-                                    color="primary"
-                                    type="submit"
-                                    disabled={!isFormValid()}
-                                >
-                                    Add Memory
-                                </Button>
-                                {success && (
-                                    <Alert color="success" className="mt-3">
-                                        Memory added successfully!
-                                    </Alert>
-                                )}
-                            </Form>
-                        </Col>
-                    </Row>
+        // <div className={styles.body}>
+        //     <div className={styles.container}>
+        //         <div className={styles.gridContainer}>
+        //         <h2>Add Memory</h2>
+        //         <ImagePreview images={eventImagePreviews} />
+        //             <Row>
+        //                 <Col>
+        //                     <Form onSubmit={handleSubmit} className={styles.form}>
+        //                         <FormGroup>
+        //                             <Input
+        //                                 type="file"
+        //                                 name="eventImages"
+        //                                 id="eventImages"
+        //                                 accept="image/*"
+        //                                 multiple
+        //                                 onChange={handleImageChange}
+        //                             />
+        //                         </FormGroup>
+        //                         <FormGroup>
+        //                             <Label for="title">Title</Label>
+        //                             <Input
+        //                                 type="text"
+        //                                 name="title"
+        //                                 id="title"
+        //                                 placeholder="Event title"
+        //                                 value={formData.title}
+        //                                 onChange={handleInputChange}
+        //                             />
+        //                         </FormGroup>
+        //                         <FormGroup>
+        //                             <Label for="author">Author</Label>
+        //                             <Input
+        //                                 type="text"
+        //                                 name="author"
+        //                                 id="author"
+        //                                 placeholder="Author name"
+        //                                 value={formData.author}
+        //                                 onChange={handleInputChange}
+        //                             />
+        //                         </FormGroup>
+        //                         <FormGroup>
+        //                             <Label for="description">Description</Label>
+        //                             <Input
+        //                                 type="textarea"
+        //                                 name="description"
+        //                                 id="description"
+        //                                 placeholder="Event description"
+        //                                 value={formData.description}
+        //                                 onChange={handleInputChange}
+        //                             />
+        //                         </FormGroup>
+        //                         <FormGroup>
+        //                             <Label for="content">Content</Label>
+        //                             <Input
+        //                                 type="textarea"
+        //                                 name="content"
+        //                                 id="content"
+        //                                 placeholder="Event content"
+        //                                 value={formData.content}
+        //                                 onChange={handleInputChange}
+        //                             />
+        //                         </FormGroup>
+        //                         <Button
+        //                             color="primary"
+        //                             type="submit"
+        //                             disabled={!isFormValid()}
+        //                         >
+        //                             Add Memory
+        //                         </Button>
+        //                         {success && (
+        //                             <Alert color="success" className="mt-3">
+        //                                 Memory added successfully!
+        //                             </Alert>
+        //                         )}
+        //                     </Form>
+        //                 </Col>
+        //             </Row>
+        //         </div>
+        //     </div>
+        // </div>
+
+
+        <div className="bg-gray-100 min-h-screen flex flex-col justify-center items-center">
+            <div className="text-center py-10">
+                <Row className="justify-center">
+                    <Col>
+                        <h2 className="text-xl font-bold uppercase">Add Memory</h2>
+                    </Col>
+                </Row>
+                <div className="justify-center">
+                    <Col>
+                        <Form onSubmit={handleSubmit} className="bg-white p-5 shadow flex flex-col justify-center items-center">
+                            <FormGroup>
+                                <Input
+                                    type="file"
+                                    name="eventImages"
+                                    id="eventImages"
+                                    accept="image/*"
+                                    multiple
+                                    onChange={handleImageChange}
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md mb-4"
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Input
+                                    type="text"
+                                    name="title"
+                                    id="title"
+                                    placeholder="Event title"
+                                    value={formData.title}
+                                    onChange={handleInputChange}
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md mb-4"
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Input
+                                    type="text"
+                                    name="author"
+                                    id="author"
+                                    placeholder="Author name"
+                                    value={formData.author}
+                                    onChange={handleInputChange}
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md mb-4"
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Input
+                                    type="textarea"
+                                    name="description"
+                                    id="description"
+                                    placeholder="Event description"
+                                    value={formData.description}
+                                    onChange={handleInputChange}
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md mb-4"
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Input
+                                    type="textarea"
+                                    name="content"
+                                    id="content"
+                                    placeholder="Event content"
+                                    value={formData.content}
+                                    onChange={handleInputChange}
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md mb-4"
+                                />
+                            </FormGroup>
+                            <Button
+                                color="primary"
+                                type="submit"
+                                disabled={!isFormValid()}
+                                className="bg-black text-white px-4 py-2 rounded-md"
+                            >
+                                Add Memory
+                            </Button>
+                            {success && (
+                                <Alert color="success" className="mt-3 w-full">
+                                    Memory added successfully!
+                                </Alert>
+                            )}
+                        </Form>
+                    </Col>
                 </div>
             </div>
         </div>
