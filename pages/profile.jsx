@@ -24,6 +24,30 @@ const Profile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
+  // modal states and functions
+  const [successModalOpen, setSuccessModalOpen] = useState(false);
+  const [errorModalOpen, setErrorModalOpen] = useState(false);
+
+
+  const showSuccessModal = () => {
+    setSuccessModalOpen(true);
+  };
+
+  const hideSuccessModal = () => {
+    setSuccessModalOpen(false);
+  };
+
+  const showErrorModal = () => {
+    setErrorModalOpen(true);
+  };
+
+  const hideErrorModal = () => {
+    setErrorModalOpen(false);
+  };
+
+
+
+
   const fetchUserEvents = async (uid) => {
     const eventsRef = collection(db, "events");
     const q = query(eventsRef, where("uid", "==", uid));
@@ -93,8 +117,10 @@ const Profile = () => {
       setUserEvents((prevEvents) =>
         prevEvents.filter((event) => event.id !== eventId)
       );
+      showSuccessModal()
     } catch (error) {
       console.error("Error deleting event:", error);
+      showErrorModal();
     }
   };
 
@@ -128,9 +154,11 @@ const Profile = () => {
     navigator.clipboard.writeText(text).then(
       () => {
         console.log("Text copied to clipboard:", text);
+        showSuccessModal()
       },
       (err) => {
         console.error("Could not copy text to clipboard:", err);
+        showErrorModal()
       }
     );
   };
@@ -215,8 +243,8 @@ const Profile = () => {
               </button>
 
               <button className="bg-black hover:bg-gray-500 text-white py-2 px-4 rounded ml-3" onClick={() => copyToClipboard(createShareableLink(event.id))}>
-              Share
-            </button>
+                Share
+              </button>
             </div>
           ))}
         </div>
@@ -238,6 +266,47 @@ const Profile = () => {
           />
         )}
       </Modal>
+
+      {/* Success Modal */}
+      <Modal
+        isOpen={successModalOpen}
+        onRequestClose={hideSuccessModal}
+        className="fixed inset-0 flex items-center justify-center p-4 bg-black bg-opacity-50"
+        contentLabel="Success Modal"
+        ariaHideApp={false}
+      >
+        <div className="w-full max-w-md bg-white rounded p-6">
+          <h2 className="text-xl font-semibold mb-4">Operation successful</h2>
+          <p>Requested action has been completed successfully.</p>
+          <button
+            onClick={hideSuccessModal}
+            className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700"
+          >
+            Close
+          </button>
+        </div>
+      </Modal>
+
+      {/* Error Modal */}
+      <Modal
+        isOpen={errorModalOpen}
+        onRequestClose={hideErrorModal}
+        className="fixed inset-0 flex items-center justify-center p-4 bg-black bg-opacity-50"
+        contentLabel="Error Modal"
+        ariaHideApp={false}
+      >
+        <div className="w-full max-w-md bg-white rounded p-6">
+          <h2 className="text-xl font-semibold mb-4">Operation failed</h2>
+          <p>There was an error completing the requested action.</p>
+          <button
+            onClick={hideErrorModal}
+            className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700"
+          >
+            Close
+          </button>
+        </div>
+      </Modal>
+
     </div>
   );
 };
