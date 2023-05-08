@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthUserContext';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db, storage } from '../lib/firebase';
 import styles from '../styles/EditProfile.module.css';
+import globalStyles from '../styles/global.module.css'
 import Head from 'next/head';
 import ReactModal from 'react-modal';
 
@@ -181,7 +182,7 @@ const EditProfile = () => {
   };
 
   if (!authUser) {
-    return <div>Loading</div>;
+    return <div className={globalStyles.loader}>Loading</div>;
   }
 
   return (
@@ -385,7 +386,7 @@ const EditProfile = () => {
                 />
                 </div>
 
-              <Button type="submit">Save Changes</Button>
+              <button type="submit" className="bg-black hover:bg-gray-400 text-white px-4 py-2 rounded-md">Save Changes</button>
               {success && (
                 <Alert color="success" className={styles.alert}>
                   Your profile has been updated successfully!
