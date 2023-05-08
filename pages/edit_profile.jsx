@@ -21,7 +21,7 @@ import {
 
 const ImagePreview = ({ defaultImage, selectedImage }) => {
   return (
-    
+
     <div className={styles.imagePreview}>
       <Head>
         <title>OGS 88 Portal</title>
@@ -52,14 +52,20 @@ const EditProfile = () => {
     oneSentenceDescription: '',
     nickname: '',
     careerAspiration: '',
-    advice: ''
+    advice: '',
+    dateOfBirth: '',
+    address: '',
+    phoneNumber: '',
+    weddingAnniversary: '',
+    entryYear: '',
+    leavingYear: ''
   });
   const [success, setSuccess] = useState(false);
   const [profileImage, setProfileImage] = useState(null);
   const [profileImageUrl, setProfileImageUrl] = useState(null);
   const [defaultImage, setDefaultImage] = useState('https://firebasestorage.googleapis.com/v0/b/ogs-two.appspot.com/o/users%2Fdefault_profile_image.png?alt=media&token=3cfe1e0c-ccb7-46c8-81ec-307c48987878');
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -133,9 +139,15 @@ const EditProfile = () => {
         oneSentenceDescription: formData.oneSentenceDescription,
         nickname: formData.nickname,
         careerAspiration: formData.careerAspiration,
-        advice: formData.advice
+        advice: formData.advice,
+        dateOfBirth: formData.dateOfBirth,
+        address: formData.address,
+        phoneNumber: formData.phoneNumber,
+        weddingAnniversary: formData.weddingAnniversary,
+        entryYear: formData.entryYear,
+        leavingYear: formData.leavingYear
       };
-      
+
 
       // Filter out empty or null values
       const filteredData = Object.fromEntries(
@@ -166,16 +178,10 @@ const EditProfile = () => {
         await updateDoc(userRef, { image: downloadURL });
       }
 
-      // Show success message and redirect to profile page
-      // setSuccess(true);
 
       // Show success message and open the modal
       setSuccess(true);
       setModalIsOpen(true);
-
-      // setTimeout(() => {
-      //   router.push('/profile');
-      // }, 2000);
     } catch (error) {
       console.error(error);
     }
@@ -210,8 +216,8 @@ const EditProfile = () => {
         <Row>
           <Col>
             <Form onSubmit={handleSubmit} className={styles.form}>
-              
-            {/* <h2>Edit Profile</h2> */}
+
+              {/* <h2>Edit Profile</h2> */}
 
               {/* PROFILE PREVIEW */}
               <FormGroup>
@@ -231,8 +237,8 @@ const EditProfile = () => {
                   className={styles.fileInput}
                 />
               </FormGroup>
-                
-                {/* TEXT INPUT SECTION */}
+
+              {/* TEXT INPUT SECTION */}
               <div className="flex space-between w-full">
                 <Input
                   type="text"
@@ -253,9 +259,9 @@ const EditProfile = () => {
                   placeholder='Middle Name'
                   className={styles.input}
                 />
-                </div>
+              </div>
 
-                <div className="flex space-between w-full">
+              <div className="flex space-between w-full">
                 <Input
                   type="text"
                   name="lastname"
@@ -275,10 +281,10 @@ const EditProfile = () => {
                   placeholder='Nickname at school'
                   className={styles.input}
                 />
-                </div>
+              </div>
 
 
-                <div className="flex space-between w-full">
+              <div className="flex space-between w-full">
                 <Input
                   type="text"
                   name="occupation"
@@ -298,9 +304,9 @@ const EditProfile = () => {
                   placeholder='Email'
                   className={styles.input}
                 />
-                </div>
+              </div>
 
-                <div className="flex space-between w-full">
+              <div className="flex space-between w-full">
                 <Input
                   type="text"
                   name="website"
@@ -320,9 +326,9 @@ const EditProfile = () => {
                   placeholder='LinkedIn Url'
                   className={styles.input}
                 />
-                </div>
+              </div>
 
-                <div className="flex space-between w-full">
+              <div className="flex space-between w-full">
                 <Input
                   type="text"
                   name="facebook"
@@ -342,19 +348,79 @@ const EditProfile = () => {
                   placeholder='Current Location (State)'
                   className={styles.input}
                 />
-                </div>
+              </div>
 
-                <Input
-                  type="text"
-                  name="currentLocationCountry"
-                  id="currentLocationCountry"
-                  value={formData.currentLocationCountry}
-                  onChange={handleInputChange}
-                  placeholder='Current Location (Country)'
-                  className={styles.input}
-                />
+              <Input
+                type="text"
+                name="currentLocationCountry"
+                id="currentLocationCountry"
+                value={formData.currentLocationCountry}
+                onChange={handleInputChange}
+                placeholder='Current Location (Country)'
+                className={styles.input}
+              />
 
-                <div className="flex flex-col w-full">
+              <Input
+                type="date"
+                name="dateOfBirth"
+                id="dateOfBirth"
+                value={formData.dateOfBirth}
+                onChange={handleInputChange}
+                placeholder="Date of Birth"
+                className={styles.input}
+              />
+
+              <Input
+                type="text"
+                name="address"
+                id="address"
+                value={formData.address}
+                onChange={handleInputChange}
+                placeholder="Address"
+                className={styles.input}
+              />
+
+              <Input
+                type="tel"
+                name="phoneNumber"
+                id="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+                placeholder="Phone Number"
+                className={styles.input}
+              />
+
+              <Input
+                type="date"
+                name="weddingAnniversary"
+                id="weddingAnniversary"
+                value={formData.weddingAnniversary}
+                onChange={handleInputChange}
+                placeholder="Wedding Anniversary"
+                className={styles.input}
+              />
+
+              <Input
+                type="number"
+                name="entryYear"
+                id="entryYear"
+                value={formData.entryYear}
+                onChange={handleInputChange}
+                placeholder="Entry Year"
+                className={styles.input}
+              />
+
+              <Input
+                type="number"
+                name="leavingYear"
+                id="leavingYear"
+                value={formData.leavingYear}
+                onChange={handleInputChange}
+                placeholder="Leaving Year"
+                className={styles.input}
+              />
+
+              <div className="flex flex-col w-full">
                 <Input
                   type="textarea"
                   name="oneSentenceDescription"
@@ -384,7 +450,7 @@ const EditProfile = () => {
                   placeholder='Word of advice to your classmates'
                   className={styles.input}
                 />
-                </div>
+              </div>
 
               <button type="submit" className="bg-black hover:bg-gray-400 text-white px-4 py-2 rounded-md">Save Changes</button>
               {success && (
@@ -398,7 +464,7 @@ const EditProfile = () => {
       </div>
 
       <div>
-        
+
       </div>
 
 
