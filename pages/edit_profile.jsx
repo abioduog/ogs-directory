@@ -232,6 +232,7 @@ const EditProfile = () => {
               </FormGroup>
                 
                 {/* TEXT INPUT SECTION */}
+              <div className="flex space-between w-full">
                 <Input
                   type="text"
                   name="firstname"
@@ -251,8 +252,9 @@ const EditProfile = () => {
                   placeholder='Middle Name'
                   className={styles.input}
                 />
+                </div>
 
-
+                <div className="flex space-between w-full">
                 <Input
                   type="text"
                   name="lastname"
@@ -272,7 +274,10 @@ const EditProfile = () => {
                   placeholder='Nickname at school'
                   className={styles.input}
                 />
+                </div>
 
+
+                <div className="flex space-between w-full">
                 <Input
                   type="text"
                   name="occupation"
@@ -292,7 +297,9 @@ const EditProfile = () => {
                   placeholder='Email'
                   className={styles.input}
                 />
+                </div>
 
+                <div className="flex space-between w-full">
                 <Input
                   type="text"
                   name="website"
@@ -312,7 +319,9 @@ const EditProfile = () => {
                   placeholder='LinkedIn Url'
                   className={styles.input}
                 />
+                </div>
 
+                <div className="flex space-between w-full">
                 <Input
                   type="text"
                   name="facebook"
@@ -332,6 +341,7 @@ const EditProfile = () => {
                   placeholder='Current Location (State)'
                   className={styles.input}
                 />
+                </div>
 
                 <Input
                   type="text"
@@ -343,8 +353,9 @@ const EditProfile = () => {
                   className={styles.input}
                 />
 
+                <div className="flex flex-col w-full">
                 <Input
-                  type="text"
+                  type="textarea"
                   name="oneSentenceDescription"
                   id="oneSentenceDescription"
                   value={formData.oneSentenceDescription}
@@ -354,7 +365,7 @@ const EditProfile = () => {
                 />
 
                 <Input
-                  type="text"
+                  type="textarea"
                   name="careerAspiration"
                   id="careerAspiration"
                   value={formData.careerAspiration}
@@ -364,7 +375,7 @@ const EditProfile = () => {
                 />
 
                 <Input
-                  type="text"
+                  type="textarea"
                   name="advice"
                   id="advice"
                   value={formData.advice}
@@ -372,6 +383,7 @@ const EditProfile = () => {
                   placeholder='Word of advice to your classmates'
                   className={styles.input}
                 />
+                </div>
 
               <Button type="submit">Save Changes</Button>
               {success && (
